@@ -1,0 +1,487 @@
+---
+title: "Home Page"
+description: "Discover our world-class services and innovative solutions. Join us on a journey to excellence."
+layout: "base.njk"
+---
+
+{% block header %}
+    {% include "header-landing.njk" %}
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section for the Home Page -->
+    <!--====== Start Hero Section ======-->
+    <section class="hero-section">
+        <!--=== Hero Wrapper ===-->
+        <div class="hero-wrapper-four">
+            <div class="shape"><span><img src="/assets/images/hero/map.png" alt=""></span></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7">
+                        <!--=== Hero Content ===-->
+                        <div class="hero-content">
+                            <span class="sub-title wow fadeInUp" data-wow-delay=".3s">Welcome to Top Tour e Viaggi Kenya</span>
+                            <h1 class="wow fadeInDown" data-wow-delay=".5s">Discover Africa’s Wonders with Us</h1>
+                            <p class="wow fadeInUp" data-wow-delay=".6s">Embark on tailor-made journeys where every detail is crafted for your perfect African safari. Explore vibrant cultures, majestic landscapes, and rich wildlife.</p>
+                            <!--=== Hero Search ===-->
+                            <div class="hero-search-form mb-40 wow fadeInDown" data-wow-delay=".7s">
+                                {# {% include "booking-form.njk" with { formAction: "/search-results/", method: "GET" } %} #}
+
+                                {# {% set formAction = "/search-results/" %}
+                                
+                                {% set method = "GET" %} #}
+
+                                {% include "booking-form.njk" %}
+
+                            </div>
+                            {# <div class="avatar-box wow fadeInUp" data-wow-delay=".75s">
+                                <!-- Debugging output -->
+                                <img src="{{ homePage.heroStrip.src }}" alt="{{ heroStrip.alt }}">
+                                <span>35+ People booked their dream place</span>
+                            </div> #}
+                            <div class="avatar-box wow fadeInUp" data-wow-delay=".75s">
+                                <!-- Debugging output -->
+                                <a href="#testimonials">
+                                    <img src="{{ homePage.heroStripImages[0].src }}" alt="{{ homePage.heroStripImages[0].alt }}">
+                                    <span>Find out why our customers are smiling.</span>
+                                </a> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 d-xl-block d-none">
+                        {# <div class="hero-image wow fadeInRight" data-wow-delay=".8s">
+                            <img src="{{ homePage.heroImage.src }}" alt="{{ heroImage.alt }}">
+                        </div> #}
+                    <div class="hero-image wow fadeInRight" data-wow-delay=".8s">
+                            <img src="{{ homePage.heroImages[0].src }}" alt="{{ homePage.heroImages[0].alt }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Hero Section ======-->
+
+    <!-- Additional content unique to the home page -->
+    <!-- Other sections specific to the home page go here -->
+       <!--====== Start Features Section ======-->
+
+        <!--====== Start Features Section ======-->
+<section class="features-section pt-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
+                <!--=== Section Title ===-->
+                <div class="section-title text-center mb-45 wow fadeInDown">
+                    <span class="sub-title">Popular Activities</span>
+                    <h2>Explore Thrilling Adventures</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+    {% for activity in activities.activities | randomSlice(4) %}
+        <div class="col-xl-3 col-md-6 col-sm-12">
+            <!--=== Features Image Item ===-->
+            <div class="single-features-item-two mb-40 wow fadeInUp">
+                <div class="img-holder">
+                    <img src="{{ activity.image }}" alt="Features Image">
+                    <div class="item-overlay">
+                        <div class="content">
+                            <h3 class="title">{{ activity.title }}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+
+            {# {% for activity in activities %}
+            <div class="col-xl-3 col-md-6 col-sm-12">
+                <!--=== Features Image Item ===-->
+                <div class="single-features-item-two mb-40 wow fadeInUp">
+                    <div class="img-holder">
+                        <img src="{{ activity.image }}" alt="Features Image">
+                        <div class="item-overlay">
+                            <div class="content">
+                                <h3 class="title">{{ activity.title }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} #}
+        </div>
+    </div>
+</section><!--====== End Features Section ======-->
+
+
+       {# <section class="features-section pt-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <!--=== Section Title ===-->
+                    <div class="section-title text-center mb-45 wow fadeInDown">
+                        <span class="sub-title">Popular Activities</span>
+                        <h2>Explore Real Adventure</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-md-6 col-sm-12">
+                    <!--=== Features Image Item ===-->
+                    <div class="single-features-item-two mb-40 wow fadeInUp">
+                        <div class="img-holder">
+                            <img src="/assets/images/features/feat-5.jpg" alt="Features Image">
+                            <div class="item-overlay">
+                                <div class="content">
+                                    <h3 class="title">Tent Camping</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-12">
+                    <!--=== Features Image Item ===-->
+                    <div class="single-features-item-two mb-40 wow fadeInDown">
+                        <div class="img-holder">
+                            <img src="/assets/images/features/feat-6.jpg" alt="Features Image">
+                            <div class="item-overlay">
+                                <div class="content">
+                                    <h3 class="title">Mountain Biking</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-12">
+                    <!--=== Features Image Item ===-->
+                    <div class="single-features-item-two mb-40 wow fadeInUp">
+                        <div class="img-holder">
+                            <img src="/assets/images/features/feat-7.jpg" alt="Features Image">
+                            <div class="item-overlay">
+                                <div class="content">
+                                    <h3 class="title">Fishing</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-sm-12">
+                    <!--=== Features Image Item ===-->
+                    <div class="single-features-item-two mb-40 wow fadeInDown">
+                        <div class="img-holder">
+                            <img src="/assets/images/features/feat-8.jpg" alt="Features Image">
+                            <div class="item-overlay">
+                                <div class="content">
+                                    <h3 class="title">Kayaking</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Features Section ======--> #}
+
+     <!--====== Start What We Section ======-->
+     <section class="we-section pt-100 pb-50">
+        <div class="container">
+            <div class="row align-items-xl-center">
+                <div class="col-xl-6">
+                    <div class="we-content-box mb-10 wow fadeInLeft">
+                        <div class="section-title mb-30">
+                            <span class="sub-title">Why Choose Us?</span>
+                            <h2>Your Passport to Unforgettable Journeys</h2>
+                        </div>
+                        <div class="features-list_one">
+                            <div class="single-features-list mb-40">
+                                <div class="icon-inner d-flex align-items-center">
+                                    <div class="icon-check">
+                                        <i class="fas fa-badge-check"></i>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="flaticon-helmet"></i>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h4>Safety as a Priority</h4>
+                                    <p>Your safety is paramount. We adhere to strict safety protocols and ensure all activities and destinations are vetted for your security.</p>
+                                </div>
+                            </div>
+                            <div class="single-features-list mb-40">
+                                <div class="icon-inner d-flex align-items-center">
+                                    <div class="icon-check">
+                                        <i class="fas fa-badge-check"></i>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="flaticon-best-price"></i>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h4>Affordable Adventures</h4>
+                                    <p>Experience world-class adventures without breaking the bank. We offer competitive pricing to make traveling accessible and enjoyable for everyone.</p>
+                                </div>
+                            </div>
+                            <div class="single-features-list mb-40">
+                                <div class="icon-inner d-flex align-items-center">
+                                    <div class="icon-check">
+                                        <i class="fas fa-badge-check"></i>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="flaticon-travel"></i>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h4>Expert Travel and Logistical Support</h4>
+                                    <p>We streamline your travel plans, offering insightful advice and managing all details for a hassle-free experience.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="col-xl-6">
+
+                    {# <div class="we-two_image-box mb-20">
+                        <div class="row align-items-end">
+                            <div class="col-md-6">
+                                <div class="we-image mb-30 wow fadeInLeft">
+                                    <img src="/assets/images/gallery/we-3.jpg" alt="we Image">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="we-image mb-30 wow fadeInRight">
+                                    <img src="/assets/images/gallery/we-4.jpg" alt="we Image">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="we-image mb-30 pr-lg-30 text-md-end wow fadeInDown">
+                                    <img src="/assets/images/gallery/we-5.jpg" alt="we Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div> #}
+
+
+            <div class="we-two_image-box mb-20">
+                <div class="row align-items-end">
+                {% for weImage in homePage.weImages %}
+                    {% if loop.index == 1 %}
+                    <div class="col-md-6">
+                    <div class="we-image mb-30 wow fadeInLeft">
+                        <img src="{{ weImage.src }}" alt="{{ weImage.alt }}">
+                    </div>
+                    </div>
+                    {% elif loop.index == 2 %}
+                    <div class="col-md-6">
+                    <div class="we-image mb-30 wow fadeInRight">
+                        <img src="{{ weImage.src }}" alt="{{ weImage.alt }}">
+                    </div>
+                    </div>
+                    {% elif loop.index == 3 %}
+                    <div class="col-md-12">
+                    <div class="we-image mb-30 pr-lg-30 text-md-end wow fadeInDown">
+                        <img src="{{ weImage.src }}" alt="{{ weImage.alt }}">
+                    </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+            </div>
+
+
+            </div>
+        </div>
+    </section><!--====== End What We Section ======-->
+
+<!-- destinations.njk -->
+<section class="services-section black-bg pt-100 pb-100">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-7">
+                <div class="section-title text-center text-white mb-50 wow fadeInDown">
+                    <span class="sub-title">Destinations</span>
+                    <h2>Discover Your Next Great Adventure</h2>
+                </div>
+            </div>
+        </div>
+        <div class="slider-active-4-item wow fadeInUp">
+            {% for destination in collections.destinations %}
+            <!-- Entire card as a link -->
+            <a href="/destinations/{{ destination.data.slug }}" class="single-service-item-two-link">
+                <div class="single-service-item-two">
+                    <div class="hover-bg bg_cover" style="background-image: url('{{ destination.data.images[0].src }}');"></div>
+                    <div class="content">
+                        <div class="icon">
+                            <i class="{{ destination.data.icon }}"></i>
+                        </div>
+                        <h3 class="title text-truncate">{{ destination.data.title }}</h3>
+                        <p>{{ destination.data.description | truncate(100) }}</p>
+                        <span class="btn-link">Read More <i class="far fa-long-arrow-right"></i></span>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+<!--====== Start Blog Section ======-->
+<section class="blog-section pt-100 pb-60">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-6">
+                <!--=== Blog Content Box ===-->
+                <div class="blog-content-box mb-40 wow fadeInLeft">
+                    <!--=== Section Title ===-->
+                    <div class="section-title mb-30">
+                        <span class="sub-title">Latest Updates</span>
+                        <h2>Discover New Horizons with Our Travel Stories</h2>
+                    </div>
+                    <p class="mb-20">Explore engaging travel narratives and expert insights tailored to enhance your next journey. Dive into a collection of stories that bring destinations to life, offering you a taste of local culture, adventure, and tips.</p>
+                    <a href="/blog" class="btn-link">Explore More Articles <i class="far fa-long-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <!--=== Blog Posts Loop ===-->
+                {% set counter = 0 %}
+                {% for post in collections.posts %}
+                {% if counter < 2 %}
+                <div class="single-blog-post-two mb-40 wow fadeInUp">
+                    <div class="post-thumbnail">
+                        <a href="{{ post.url }}"><img src="{{ post.data.image }}" alt="{{ post.data.title }}"></a>
+                    </div>
+                    <div class="entry-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i><a href="{{ post.url }}">{{ post.date | date("MMMM DD, YYYY") }}</a></span>
+                            <h3 class="title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+                            <a href="{{ post.url }}" class="main-btn filled-btn">Read More<i class="far fa-paper-plane"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% set counter = counter + 1 %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section><!--====== End Blog Section ======-->
+
+
+
+
+
+
+    <!--====== Start Testimonial Section ======-->
+    <section class="testimonial-section pt-60 pb-60" id="testimonials">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8">
+                    <!--=== Section Title ===-->
+                    <div class="section-title text-center mb-60 wow fadeInDown">
+                        <span class="sub-title">Testimonials</span>
+                        <h2>Hear from Our Happy Adventurers</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-xl-center">
+                <div class="col-xl-7 col-lg-12 order-1 order-xl-2">
+                    <!--=== Testimonial Slider ===-->
+                    <div class="testimonial-slider-one pl-lg-55 mb-40 wow fadeInRight">
+                        {% for testimonial in testimonials.testimonials %}
+
+                        <!--=== Testimonial Item ===-->
+                        <div class="gw-testimonial-item">
+                            <div class="testimonial-inner-content">
+                                <div class="quote-rating-box">
+                                    <div class="icon">
+                                        <img src="/assets/images/testimonial/quote.png" alt="quote icon">
+                                    </div>
+                                    <div class="ratings-box">
+                                        <h4>{{ testimonial.service }}</h4>
+                                        <ul class="ratings">
+                                            {% for i in range(0, testimonial.rating) %}
+                                            <li><i class="fas fa-star"></i></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p>{{ testimonial.text }}</p>
+                                <div class="author-thumb-title">
+                                    <div class="author-thumb">
+                                        <img src="{{ testimonial.author.image }}" alt="Image of {{ testimonial.author.name }}">
+                                    </div>
+                                    <div class="author-title">
+                                        <h3 class="title">{{ testimonial.author.name }}</h3>
+                                        <p class="position">{{ testimonial.author.position }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-12 order-2 order-xl-1">
+                    <!--=== Testimonial Image ===-->
+                    <div class="testimonial-one_image-box mb-40 wow fadeInLeft">
+                            <img src="{{ aboutUsPage.testimonialImage[0].src }}" alt="{{ aboutUsPage.testimonialImage[0].alt }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Testimonial Section ======-->
+
+
+
+    <!--====== Start Popular Tours Section ======-->
+<section class="places-section pt-95 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title text-center mb-45 wow fadeInDown">
+                    <span class="sub-title">Tours</span>
+                    <h2>Top Tour Picks For You</h2>
+                </div>
+            </div>
+        </div>
+        <div class="slider-active-3-item-dot wow fadeInUp">
+            {% for tour in collections.featuredTours %}
+            <div class="single-place-item mb-60 wow fadeInUp">
+                <div class="place-img">
+                    <a href="{{ tour.url }}"><img src="{{ tour.data.cardImageSrc }}" alt="{{ tour.data.cardImageAlt }}"></a>
+                </div>
+                <div class="place-content">
+                    <div class="info">
+                        <ul class="ratings">
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><i class="fas fa-star"></i></li>
+                            <li><a href="#">(4.9)</a></li>
+                        </ul>
+                        <h4 class="title ellipsis"><a href="{{ tour.url }}">{{ tour.data.title }}</a></h4>
+                        <p class="location pb-10"><i class="fas fa-map-marker-alt"></i>{{ tour.data.location | titleCase }}</p>
+                        <p class="price"><i class="fas fa-usd-circle"></i>Resident: <span class="currency"></span>KES {{ tour.data.residentYouthPrice }}</p>
+                        <p class="price"><i class="fas fa-usd-circle"></i>Non-Resident: <span class="currency"></span>USD {{ tour.data.youthPrice }}</p>
+                        <div class="meta">
+                            <span><i class="far fa-clock"></i>{{ tour.data.duration }} Days</span>
+                            <span><i class="far fa-user"></i>{{ tour.data.maxGuests }} Guests</span>
+                            <span><a href="{{ tour.url }}">Details<i class="far fa-long-arrow-right"></i></a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section><!--====== End Popular Tours Section ======-->
+
+<!-- Include the Image Strip at the bottom of every page -->
+{% include "gallery-strip.njk" %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+<!--====== Start Gallery Section ======-->
+<section class="gallery-section mbm-150">
+    <div class="container-fluid">
+        <div class="slider-active-5-item wow fadeInUp">
+            {% for item in gallery.gallery %}
+            <!--=== Single Gallery Item ===-->
+            <div class="single-gallery-item">
+                <div class="gallery-img">
+                    <img src="{{ item.pageSrc }}" alt="{{ item.alt }}" class="img-fluid">
+                    <div class="hover-overlay">
+                        <a href="{{ item.pageSrc }}" class="icon-btn img-popup" data-lightbox="gallery-item"><i class="far fa-plus"></i></a>
+                        {# <span class="caption">{{ item.caption }}</span> #}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--====== End Gallery Section ======-->

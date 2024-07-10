@@ -1,0 +1,40 @@
+{
+  "heroImages": [
+    {
+      "src": "/assets/images/hero/hero-image-final.jpg",
+      "alt": "Hero Image",
+      "hint": "Upload a large hero image for the home page. Recommended dimensions: 575x725 pixels."
+    }
+  ],
+  "heroStripImages": [
+    {
+      "src": "/assets/images/about/avaters.png",
+      "alt": "Hero Strip Images",
+      "hint": "Upload a strip image for the home page. Recommended dimensions: 356x70 pixels."
+    }
+  ],
+  "weImages": [
+    {
+      "src": "/assets/images/gallery/scuba.jpg",
+      "alt": "We Image 1",
+      "hint": "Upload a square image for the home page gallery. Recommended dimensions: 300x300 pixels."
+    },
+    {
+      "src": "/assets/images/gallery/file.jpg",
+      "alt": "We Image 2",
+      "hint": "Upload a portrait image for the home page gallery. Recommended dimensions: 300x355 pixels."
+    },
+    {
+      "src": "/assets/images/gallery/we3.jpg",
+      "alt": "We Image 3",
+      "hint": "Upload a landscape image for the home page gallery. Recommended dimensions: 520x255 pixels."
+    }
+  ],
+  "testimonialImage": [
+    {
+      "src": "/assets/images/testimonial/testimonial-1.jpg",
+      "alt": "Testimonial Image",
+      "hint": "Upload an image for the testimonial section. Recommended dimensions: 875x565 pixels."
+    }
+  ]
+}

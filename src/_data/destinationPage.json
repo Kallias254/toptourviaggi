@@ -1,0 +1,22 @@
+{
+  "pageBanner": [
+    {
+      "src": "/assets/images/bg/destinations-2-1-.jpg",
+      "alt": "Destination Page Banner",
+      "hint": "Upload a large banner image for the destination page. Recommended dimensions: 1920x469 pixels."
+    }
+  ],
+  "videoPopup": [
+    {
+      "src": "https://www.youtube.com/watch?v=lvKiGrb_IfA&ab_channel=TopToureViaggiKenya",
+      "hint": "Provide the YouTube link for the video popup on the destination page."
+    }
+  ],
+  "ctaBackground": [
+    {
+      "src": "/assets/images/bg/epupa-waterfalls-in-on-the-border-of-angola-and-na-2023-11-27-05-34-39-utc_optimized-1-.jpg",
+      "alt": "CTA Background",
+      "hint": "Upload a background image for the CTA section. Recommended dimensions: 1920x1080 pixels."
+    }
+  ]
+}

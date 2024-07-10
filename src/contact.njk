@@ -1,0 +1,162 @@
+---
+title: "Contact Us"
+description: "Get in touch with us to learn more about our tours or to book your next adventure."
+layout: "base.njk"
+---
+
+{% block header %}
+    {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+<!--====== Start Breadcrumb Section ======-->
+<section class="page-banner overlay pt-170 pb-170 bg_cover" style="background-image: url('{{ contactUsPage.pageBanner[0].src }}');">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="page-banner-content text-center text-white">
+                    <h1 class="page-title">{{title}}</h1>
+                    <ul class="breadcrumb-link text-white">
+                        <li><a href="/">Home</a></li>
+                        <li class="active">{{title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--====== End Breadcrumb Section ======-->
+
+<!--====== Start Contact Info Section ======-->
+<section class="contact-info-section pt-100 pb-60">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
+                <div class="section-title text-center mb-45 wow fadeInDown">
+                    <span class="sub-title">Contact Us</span>
+                    <h2>Unmatched Service and Support</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="contact-info-item text-center mb-40 wow fadeInUp" data-wow-delay=".2s">
+                    <div class="icon">
+                        <img src="/assets/images/icon/icon-1.png" alt="Office Location">
+                    </div>
+                    <div class="info">
+                        <span class="title">Office Location</span>
+                        <p>{{ info.address }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="contact-info-item text-center mb-40 wow fadeInDown" data-wow-delay=".3s">
+                    <div class="icon">
+                        <img src="/assets/images/icon/icon-2.png" alt="Email">
+                    </div>
+                    <div class="info">
+                        <span class="title">Email Address</span>
+                        <p><a href="mailto:{{ info.email }}">{{ info.email }}</a></p>
+                    </div>
+                </div>
+            </div>
+         <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="contact-info-item text-center mb-40 wow fadeInDown" data-wow-delay=".3s">
+                    <div class="icon">
+                        <img src="/assets/images/icon/icon-3.png" alt="Email">
+                    </div>
+                    <div class="info">
+                        <span class="title">Hotline</span>
+                        <p><a href="tel:{{ info.phone }}">{{ info.phone }}</a></p>
+                    </div>
+                </div>
+            </div>
+            {# <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="contact-info-item text-center mb-40 wow fadeInUp" data-wow-delay=".4s">
+                    <div class="icon">
+                        <img src="/assets/images/icon/icon-3.png" alt="Phone">
+                    </div>
+                    <div the="info">
+                        <span class="title">Hotline</span>
+                        <p><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></p>
+                    </div>
+                </div>
+            </div> #}
+        </div>
+    </div>
+</section>
+<!--====== End Contact Info Section ======-->
+
+<!--====== Start Contact Section ======-->
+<section class="contact-section pb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-6">
+                <div class="section-title text-center mb-50 wow fadeInDown" data-wow-delay=".5s">
+                    <span class="sub-title">Get In Touch</span>
+                    <h2>Send Us a Message</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="contact-area contact-form wow fadeInUp" data-wow-delay=".6s">
+                    {# <form id="contactForm" name="contactForm" class="contactForm" method="POST" data-netlify="true"> #}
+                    <form id="contactForm" name="contactForm" class="contactForm" method="POST" data-netlify="true" action="/thank-you/">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form_group">
+                                    <input type="text" placeholder="Name" class="form_control" name="name" id="name" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form_group">
+                                    <input type="text" placeholder="Phone Number" class="form_control" name="phone_number" id="phone_number" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form_group">
+                                    <input type="email" placeholder="Email Address" class="form_control" name="email" id="email" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form_group">
+                                    <textarea name="message" id="message" placeholder="Your Message" class="form_control" rows="6" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form_group text-center">
+                                    <button class="main-btn primary-btn">Send Message<i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="bot-field" /> <!-- Hidden field for spam filtering -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== Start Contact Map Section ======-->
+<section class="contact-page-map pb-100 wow fadeInUp" data-wow-duration="1.5s">
+    <div class="map-box">
+        <iframe src="https://maps.google.com/maps?q={{ info.coordinates | url_encode }}&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+</section>
+<!--====== End Contact Map Section ======-->
+
+<!-- Include the Image Strip at the bottom of every page -->
+{% include "gallery-strip.njk" %}
+
+<!--====== End Contact Section ======-->
+{% endblock %}
+
+
+{% block scripts %}
+    <!-- For Contact Form -->
+    <script src="/assets/vendor/form-validation/jquery.ajaxchimp.min.js"></script>
+    <script src="/assets/vendor/form-validation/form-validator.min.js"></script>
+    <script src="/assets/vendor/form-validation/contact-form-script.js"></script>
+{% endblock %}

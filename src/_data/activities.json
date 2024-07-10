@@ -1,0 +1,54 @@
+{
+  "activities": [
+    {
+      "image": "/assets/images/features/mount-climbing.jpg",
+      "title": "Mountain Climbing",
+      "description": "Experience the thrill of reaching the summit with our guided mountain climbing adventures."
+    },
+    {
+      "image": "/assets/images/features/kayaking.jpg",
+      "title": "Kayaking",
+      "description": "Paddle through breathtaking landscapes and serene waters on our kayaking tours."
+    },
+    {
+      "image": "/assets/images/features/gamedrives.jpg",
+      "title": "Game Drives",
+      "description": "Explore the wild and observe wildlife in their natural habitat on our exciting safari tours."
+    },
+    {
+      "image": "/assets/images/features/snorkelling.jpg",
+      "title": "Snorkeling",
+      "description": "Dive into the deep and explore the vibrant underwater world with our scuba diving packages."
+    },
+    {
+      "image": "/assets/images/features/scuba.jpg",
+      "title": "Historical Tours",
+      "description": "Discover the secrets of ancient sites and learn about rich histories on our educational historical tours."
+    },
+    {
+      "image": "/assets/images/features/mountain-biking.jpg",
+      "title": "Cycling Tours",
+      "description": "Cycle through scenic routes and enjoy the great outdoors with our guided cycling tours."
+    },
+    {
+      "image": "/assets/images/features/paragliding.jpg",
+      "title": "Paragliding",
+      "description": "Soar above stunning landscapes and experience the thrill of flight with our paragliding experiences."
+    },
+    {
+      "image": "/assets/images/features/camping.jpg",
+      "title": "Camping",
+      "description": "Embark on an exhilarating adventure and immerse yourself in the great outdoors through our captivating camping experiences."
+    },
+    {
+      "image": "/assets/images/features/photography.jpg",
+      "title": "Photography",
+      "description": "Enhance your photography skills with expert guidance while capturing beautiful landscapes and wildlife."
+    },
+    {
+      "image": "/assets/images/features/sundowner.png",
+      "title": "Sundowners",
+      "description": "Unwind and reconnect with yourself in our peaceful yoga retreats set in tranquil environments."
+    }
+  ]
+}

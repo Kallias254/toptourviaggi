@@ -1,0 +1,208 @@
+---
+title: "Destinations"
+description: "Explore our curated list of stunning destinations around the world."
+pagination:
+    data: collections.destinations
+    size: 6
+    alias: destinations
+    addAllPagesToCollections: true
+layout: base.njk
+permalink: "/destinations/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+
+{% block header %}
+    {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+  <!--====== Start Breadcrumb Section ======-->
+  {# <section class="page-banner overlay pt-170 pb-220 bg_cover" style="background-image: url(/assets/images/bg/page-bg.jpg);"> #}
+  <section class="page-banner overlay pt-170 pb-220 bg_cover" style="background-image: url('{{ destinationPage.pageBanner[0].src }}');">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="page-banner-content text-center text-white">
+                    <h1 class="page-title">{{title}}</h1>
+                    <ul class="breadcrumb-link text-white">
+                        <li><a href="/">Home</a></li>
+                        <li class="active">{{title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--====== End Breadcrumb Section ======-->
+<!--====== Start Booking Section ======-->
+<section class="booking-form-section pb-100">
+    <div class="container-fluid">
+        <div class="booking-form-wrapper p-r z-2">
+            {# {% set formAction = "/search-results/" %}
+                                
+                {% set method = "GET" %} #}
+
+                {% include "booking-form.njk" %}
+            </div>
+        </div>
+    </section><!--====== End Booking Section ======-->
+
+
+    <!--====== Start Destination Section ======-->
+<section class="destination-section pb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Looping through destinations collection -->
+            {% for destination in destinations %}
+                {% set locationNormalized = destination.data.location | lower %}
+                {% set tourCount = (collections.toursByLocation[locationNormalized] or []).length %}
+                <div class="{% if destination.data.size == 'medium' %}col-lg-6{% else %}col-lg-3{% endif %} col-md-6 col-sm-12 mb-30 wow fadeInUp">
+                    <a href="/destinations/{{ destination.data.title | slug }}" class="destination-link">
+                    <div class="single-place-item-two mb-30 wow fadeInUp">
+                        <div class="place-img">
+                            <img src="{{ destination.data.image }}" alt="{{ destination.data.title }} Image">
+                            <span class="tour-count">{{ tourCount }} Tours</span>
+                            <div class="place-content">
+                                <div class="info text-white">
+                                    <p>Travel to</p>
+                                    <h3 class="title mb-10">{{ destination.data.title }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            {% else %}
+                <div class="col-12">
+                    <p>No destinations available at the moment. Please check back later.</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="gowilds-pagination wow fadeInUp text-center mt-30">
+                    {% if pagination.href.previous %}
+                        <li><a href="{{ pagination.href.previous }}"><i class="far fa-arrow-left"></i></a></li>
+                    {% endif %}
+                    {% for pageUrl in pagination.hrefs %}
+                        <li><a href="{{ pageUrl }}" class="{{ 'active' if pageUrl == pagination.page.href }}">{{ loop.index0 + 1 }}</a></li>
+                    {% endfor %}
+                    {% if pagination.href.next %}
+                        <li><a href="{{ pagination.href.next }}"><i class="far fa-arrow-right"></i></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--====== End Destination Section ======-->
+
+
+
+                      
+
+    <!--====== Start Features Section ======-->
+    <section class="features-section pt-100 pb-50">
+        <div class="container">
+            <div class="row align-items-xl-center">
+                <div class="col-xl-5">
+                    <!--=== Features Content Box ===-->
+                    <div class="features-content-box pr-lg-70 mb-50 wow fadeInLeft">
+                        <!--=== Section Title ===-->
+                        <div class="section-title mb-30">
+                            <span class="sub-title">Uncover the Wild</span>
+                            <h2>Immerse Yourself in Adventure</h2>
+                        </div>
+                        <p class="mb-30">Embark on a journey where every path leads to discovery and every moment is a step towards the wild. Let's usher you into the heart of nature's most untamed wonders.</p>
+                        <a href="/blog" class="main-btn filled-btn">Discover More<i class="far fa-paper-plane"></i></a>
+                    </div>
+                </div>
+                <div class="col-xl-7">
+                    <div class="features-item-area mb-20 pl-lg-70">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!--=== Fancy Icon Box ===-->
+                                <div class="fancy-icon-box-two mb-30 wow fadeInUp">
+                                    <div class="icon">
+                                        <i class="flaticon-camping"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h3 class="title">Under the Stars</h3>
+                                        <p>Revel in the serenity of nature's embrace with our signature camping experiences, designed for comfort and awe under a canopy of stars.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!--=== Fancy Icon Box ===-->
+                                <div class="fancy-icon-box-two mb-30 wow fadeInUp">
+                                    <div class="icon">
+                                        <i class="flaticon-biking-mountain"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h3 class="title">Mountain Trails</h3>
+                                        <p>Challenge the rugged trails and feel the adrenaline as you bike through scenic terrains that promise both thrill and splendor.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!--=== Fancy Icon Box ===-->
+                                <div class="fancy-icon-box-two mb-30 wow fadeInUp">
+                                    <div class="icon">
+                                        <i class="flaticon-fishing-2"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h3 class="title">Aquatic Adventures</h3>
+                                        <p>Navigate the ebbs and flows of pristine waters with our guided fishing and boating excursions, tailored for anglers and explorers alike.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!--=== Fancy Icon Box ===-->
+                                <div class="fancy-icon-box-two mb-30 wow fadeInUp">
+                                    <div class="icon">
+                                        <i class="flaticon-caravan"></i>
+                                    </div>
+                                    <div class="text">
+                                        <h3 class="title">On the Road</h3>
+                                        <p>Embrace the freedom of the open road with our RV caravan adventures. Discover new horizons at your own pace, in the comfort of home-on-wheels.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Features Section ======-->
+
+
+
+<!--====== Start CTA Section ======-->
+{# <section class="cta-bg overlay bg_cover pt-150 mb-150 pb-150" style="background-image: url(assets/images/bg/cta-bg2.jpg);"> #}
+<section class="cta-bg overlay bg_cover pt-150 mb-150 pb-150" style="background-image: url('{{ destinationPage.ctaBackground[0].src }}');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-7 col-lg-8">
+                <!--=== CTA Content Box ===-->
+                <div class="cta-content-box text-white">
+                    <h2 class="mb-35">Embrace the Call of Adventure</h2>
+                    <p class="mb-35">Are you ready to embark on a real adventure and connect with the natural world in ways you've never imagined? The journey of a lifetime awaits.</p>
+                    <a href="about.html" class="main-btn secondary-btn">Check Availability<i class="far fa-paper-plane"></i></a>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-4">
+                <!--=== Play Box ===-->
+                <div class="play-box text-center">
+                    <a href="{{ destinationPage.videoPopup[0].src }}" class="video-popup">
+                        <i class="fas fa-play"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--====== End CTA Section ======-->
+
+<!-- Include the Image Strip at the bottom of every page -->
+{% include "gallery-strip.njk" %}
+
+{% endblock %}

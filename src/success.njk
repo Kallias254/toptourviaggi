@@ -1,0 +1,54 @@
+---
+layout: base.njk
+title: "Submission Successful"
+---
+
+{% block header %}
+    {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+    <!-- About Page Specific Content Here -->
+    <!--====== Start Breadcrumb Section ======-->
+    <section class="page-banner overlay pt-170 pb-170 bg_cover" style="background-image: url(/assets/images/bg/page-bg.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="page-banner-content text-center text-white">
+                        <h1 class="page-title">{{title}}</h1>
+                        <ul class="breadcrumb-link text-white">
+                            <li><a href="/">Home</a></li>
+                            <li class="active">{{title}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Breadcrumb Section ======-->
+
+    <!--====== Start Booking Section ======-->
+    <section class="booking-form-section">
+        <div class="container-fluid">
+            <div class="booking-form-wrapper p-r z-2">
+                {# {% set formAction = "/search-results/" %}
+                                    
+                {% set method = "GET" %} #}
+
+                {% include "booking-form.njk" %}
+            </div>
+        </div>
+    </section>
+
+    <!--====== Terms and Conditions Content ======-->
+    <section class="pt-50 pb-50">
+        <div class="container text-center">
+            <h1>Thank you!</h1>
+            <p>Your booking has been successfully submitted. We will contact you soon.</p>
+            <a href="/" class="main-btn primary-btn mt-30">Return to Home<i class="fas fa-home"></i></a>
+        </div>
+    </section>
+    
+<!-- Include the Image Strip at the bottom of every page -->
+{% include "gallery-strip.njk" %}
+
+{% endblock %}

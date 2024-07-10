@@ -1,0 +1,84 @@
+{% extends "base.njk" %}
+
+{% set title = "Search Results" %}
+
+{% block header %}
+    {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+<!--====== Start Breadcrumb Section ======-->
+<section class="page-banner overlay pt-170 pb-220 bg_cover" style="background-image: url(/assets/images/bg/page-bg.jpg);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="page-banner-content text-center text-white">
+                    <h1 class="page-title">{{ title }}</h1>
+                    <ul class="breadcrumb-link text-white">
+                        <li><a href="/">Home</a></li>
+                        <li class="active">{{ title }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--====== End Breadcrumb Section ======-->
+
+<!--====== Start Booking Section ======-->
+<section class="booking-form-section pb-100">
+    <div class="container-fluid">
+        <div class="booking-form-wrapper p-r z-2">
+            {# {% set formAction = "/search-results/" %}
+                                
+                {% set method = "GET" %} #}
+
+                {% include "booking-form.njk" %}
+            </div>
+        </div>
+</section><!--====== End Booking Section ======-->
+
+
+<!-- src/search-results.njk -->
+<section class="places-section pb-100">
+    <div class="container">
+        <div class="row">
+            {% set searchCriteria = searchData.tour_type | default('') %}
+            {% set filteredItems = collections.tours.concat(collections.excursions) | filterByType(searchCriteria) %}
+
+            {% if searchCriteria and filteredItems | length %}
+                {% for item in filteredItems %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-place-item mb-30">
+                            <div class="place-img">
+                                <img src="{{ item.data.images[0] }}" alt="{{ item.data.title }}">
+                            </div>
+                            <div class="place-content">
+                                <h4><a href="{{ item.url }}">{{ item.data.title }}</a></h4>
+                                <p><i class="fas fa-map-marker-alt"></i> {{ item.data.location }}</p>
+                                <p class="price"><i class="fas fa-usd-circle"></i>Starting from ${{ item.data.price }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-12">
+                    <p>No results found for the selected activity. Please try a different search.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchData = JSON.parse(localStorage.getItem('searchData') || '{}');
+        if (!searchData.tour_type) {
+            console.log('No search criteria provided, displaying all tours and excursions.');
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,143 @@
+---
+title: "Gallery"
+description: "Explore our gallery to see the beautiful places we've visited."
+layout: "base.njk"
+pagination:
+  data: gallery.gallery
+  size: 9
+  alias: pageItems
+permalink: "/gallery/{% if pagination.pageNumber == 0 %}{% else %}{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+
+{% block header %}
+    {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+    <!--====== Start Breadcrumb Section ======-->
+    <section class="page-banner overlay pt-170 pb-170 bg_cover" style="background-image: url(/assets/images/bg/page-bg.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="page-banner-content text-center text-white">
+                        <h1 class="page-title">Gallery</h1>
+                        <ul class="breadcrumb-link text-white">
+                            <li><a href="/">Home</a></li>
+                            <li class="active">{{ title }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====== End Breadcrumb Section ======-->
+
+    <!--====== Start Gallery Section ======-->
+    <section class="gallery-area pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                {% for item in pageItems %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="single-gallery-item mb-30 wow fadeInUp">
+                        <div class="gallery-img">
+                            <img src="{{ item.pageSrc }}" alt="{{ item.alt }}">
+                            <div class="hover-overlay">
+                                <a href="{{ item.pageSrc }}" class="icon-btn img-popup"><i class="far fa-plus"></i></a>
+                                {# <span class="caption">{{ item.caption }}</span> #}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Pagination -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="gowilds-pagination wow fadeInUp text-center">
+                        {% if pagination.href.previous %}
+                        <li><a href="{{ pagination.href.previous }}"><i class="far fa-arrow-left"></i></a></li>
+                        {% endif %}
+            
+                        {% for pageUrl in pagination.hrefs %}
+                        <li class="{{ 'active' if pageUrl == pagination.page.href }}">
+                            <a href="{{ pageUrl }}">{{ loop.index0 + 1 }}</a>
+                        </li>
+                        {% endfor %}
+            
+                        {% if pagination.href.next %}
+                        <li><a href="{{ pagination.href.next }}"><i class="far fa-arrow-right"></i></a></li>
+                        {% endif %}
+                    </ul>
+                    <!-- Debug information -->
+                    <div>
+                        <p>Current Page URL: {{ pagination.page.href }}</p>
+                        <p>Previous URL: {{ pagination.href.previous }}</p>
+                        <p>Page URLs:</p>
+                        <ul>
+                            {% for pageUrl in pagination.hrefs %}
+                            <li>{{ pageUrl }} - {{ 'Active' if pageUrl == pagination.page.href }}</li>
+                            {% endfor %}
+                        </ul>
+                        <p>Next URL: {{ pagination.href.next }}</p>
+                    </div>
+                </div>
+            </div>
+            
+    </section>
+    <!--====== End Gallery Section ======-->
+
+
+{# ---
+title: "Gallery"
+description: "Explore our gallery to see the beautiful places we've visited."
+layout: "base.njk"
+pagination:
+  data: collections.gallery
+  size: 9
+  alias: galleryItems
+  addAllPagesToCollections: true
+permalink: "/gallery/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}"
+--- #}
+
+    <!--====== Start Gallery Section ======-->
+{# <section class="gallery-area pt-100 pb-70">
+  <div class="container">
+    <div class="row">
+      {% for item in galleryItems %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="single-gallery-item mb-30 wow fadeInUp">
+          <div class="gallery-img">
+            <img src="{{ item.data.pageSrc }}" alt="{{ item.data.alt }}">
+            <div class="hover-overlay">
+              <a href="{{ item.data.pageSrc }}" class="icon-btn img-popup"><i class="far fa-plus"></i></a>
+              <span class="caption">{{ item.data.caption }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="gowilds-pagination wow fadeInUp text-center">
+          {% if collections.pagination.previous %}
+          <li><a href="{{ collections.pagination.previous.href }}"><i class="far fa-arrow-left"></i></a></li>
+          {% endif %}
+
+          {% for page in collections.pagination.pages %}
+          <li class="{{ 'active' if page.url == collections.pagination.href }}">
+            <a href="{{ page.url }}">{{ loop.index }}</a>
+          </li>
+          {% endfor %}
+
+          {% if collections.pagination.next %}
+          <li><a href="{{ collections.pagination.next.href }}"><i class="far fa-arrow-right"></i></a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section> #}
+{% endblock %}

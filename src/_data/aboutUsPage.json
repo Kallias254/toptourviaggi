@@ -1,0 +1,23 @@
+{
+  "pageBanner": [
+    {
+      "src": "/assets/images/bg/aboutbanner-1-.jpg",
+      "alt": "About Us Page Banner",
+      "hint": "Upload a large banner image for the about us page. Recommended dimensions: 1920x469 pixels."
+    }
+  ],
+  "ctaBackground": [
+    {
+      "src": "/assets/images/bg/about-us-embark.jpg",
+      "alt": "Call to Action Background",
+      "hint": "Upload a background image for the call to action section on the about us page. Recommended dimensions: 1920x517 pixels."
+    }
+  ],
+  "testimonialImage": [
+    {
+      "src": "/assets/images/testimonial/testimonials.jpg",
+      "alt": "Testimonial Image",
+      "hint": "Upload an image for the testimonial section. Recommended dimensions: 875x565 pixels."
+    }
+  ]
+}

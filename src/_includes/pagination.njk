@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="gowilds-pagination wow fadeInUp text-center mt-30">
+            {% if pagination.href.previous %}
+            <li><a href="{{ pagination.href.previous }}"><i class="far fa-arrow-left"></i> Previous</a></li>
+            {% endif %}
+            {% for page in pagination.pages %}
+                {% set isActive = (page.url == pagination.page.url) ? 'active' : '' %}
+                <li><a href="{{ page.url }}" class="{{ isActive }}">{{ loop.index }}</a></li>
+            {% endfor %}
+            {% if pagination.href.next %}
+            <li><a href="{{ pagination.href.next }}">Next <i class="far fa-arrow-right"></i></a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+

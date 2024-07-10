@@ -1,0 +1,138 @@
+            <h4 class="widget-title">Book Your {{ pageType | capitalize }}</h4>
+            <form class="sidebar-booking-form" action="/checkout" method="GET" 
+            data-type="{{ pageType }}"
+            data-title="{{ title | safe }}"
+            data-tour-url="{{ page.url | url }}"
+            data-adult-price="{{ adultPrice }}"
+            data-youth-price="{{ youthPrice }}"
+            data-child-price="{{ childPrice }}"
+            data-resident-adult-price="{{ residentAdultPrice }}"
+            data-resident-youth-price="{{ residentYouthPrice }}"
+            data-resident-child-price="{{ residentChildPrice }}"
+            data-location="{{ location }}"
+            data-duration="{{ duration }}"
+            data-image="{{ cardImageSrc }}"
+            data-alt="{{ cardImageAlt }}">
+            <!-- Form fields -->
+                                    <div class="booking-date mb-20">
+                                        <div class="booking-item">
+                                            <label>Date</label>
+                                            <div class="bk-item booking-date">
+                                                <i class="far fa-calendar-alt"></i>
+                                                <input type="text" name="date" placeholder="Select Date"  autocomplete="off" class="datepicker" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="booking-guest-box mb-20">
+                                        <h6 class="mb-20">Tickets Section:</h6>
+                                        {% set prices = [adultPrice, youthPrice, childPrice] %}
+                                        {% set ageGroups = ["Adult Tickets (18+ years)", "Youth Tickets (13-17 years)", "Child Tickets (0-12 years)"] %}
+                                        {% for i in range(3) %}
+                                        <div class="booking-item">
+                                            <label>{{ ageGroups[i] }}{# {{ prices[i] }} #}</label>
+                                            <div class="bk-item booking-user">
+                                                <i class="far fa-user"></i>
+                                                <select class="wide" id="count{{ i }}" name="count{{ i }}">
+                                                    <option value="0">0</option>
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="booking-item">
+                                        <label>Nationality</label>
+                                        <div class="bk-item">
+                                            <i class="far fa-flag"></i>
+                                            <select class="form_control" name="country" required>
+                                                <option value="" disabled selected>Country</option>
+                                            <optgroup label="Africa">
+                                                <option value="kenya">Kenya</option>
+                                                <option value="south-africa">South Africa</option>
+                                                <option value="nigeria">Nigeria</option>
+                                                <option value="egypt">Egypt</option>
+                                                <option value="morocco">Morocco</option>
+                                                <option value="ghana">Ghana</option>
+                                                <option value="tanzania">Tanzania</option>
+                                                <option value="ethiopia">Ethiopia</option>
+                                                <option value="uganda">Uganda</option>
+                                                <option value="algeria">Algeria</option>
+                                            </optgroup>
+                                            <optgroup label="Asia">
+                                                <option value="china">China</option>
+                                                <option value="india">India</option>
+                                                <option value="japan">Japan</option>
+                                                <option value="south-korea">South Korea</option>
+                                                <option value="thailand">Thailand</option>
+                                                <option value="vietnam">Vietnam</option>
+                                                <option value="malaysia">Malaysia</option>
+                                                <option value="indonesia">Indonesia</option>
+                                                <option value="philippines">Philippines</option>
+                                                <option value="pakistan">Pakistan</option>
+                                            </optgroup>
+                                            <optgroup label="Europe">
+                                                <option value="united-kingdom">United Kingdom</option>
+                                                <option value="france">France</option>
+                                                <option value="germany">Germany</option>
+                                                <option value="italy">Italy</option>
+                                                <option value="spain">Spain</option>
+                                                <option value="netherlands">Netherlands</option>
+                                                <option value="belgium">Belgium</option>
+                                                <option value="poland">Poland</option>
+                                                <option value="russia">Russia</option>
+                                                <option value="sweden">Sweden</option>
+                                            </optgroup>
+                                            <optgroup label="North America">
+                                                <option value="united-states">United States</option>
+                                                <option value="canada">Canada</option>
+                                                <option value="mexico">Mexico</option>
+                                                <option value="guatemala">Guatemala</option>
+                                                <option value="costa-rica">Costa Rica</option>
+                                                <option value="panama">Panama</option>
+                                                <option value="jamaica">Jamaica</option>
+                                                <option value="cuba">Cuba</option>
+                                                <option value="haiti">Haiti</option>
+                                                <option value="dominican-republic">Dominican Republic</option>
+                                            </optgroup>
+                                            <optgroup label="South America">
+                                                <option value="brazil">Brazil</option>
+                                                <option value="argentina">Argentina</option>
+                                                <option value="colombia">Colombia</option>
+                                                <option value="chile">Chile</option>
+                                                <option value="peru">Peru</option>
+                                                <option value="venezuela">Venezuela</option>
+                                                <option value="ecuador">Ecuador</option>
+                                                <option value="bolivia">Bolivia</option>
+                                                <option value="uruguay">Uruguay</option>
+                                                <option value="paraguay">Paraguay</option>
+                                            </optgroup>
+                                            <optgroup label="Oceania">
+                                                <option value="australia">Australia</option>
+                                                <option value="new-zealand">New Zealand</option>
+                                                <option value="fiji">Fiji</option>
+                                                <option value="papua-new-guinea">Papua New Guinea</option>
+                                                <option value="samoa">Samoa</option>
+                                                <option value="tonga">Tonga</option>
+                                                <option value="vanuatu">Vanuatu</option>
+                                                <option value="marshall-islands">Marshall Islands</option>
+                                                <option value="solomon-islands">Solomon Islands</option>
+                                                <option value="tuvalu">Tuvalu</option>
+                                            </optgroup>
+                                            </select>
+                                            {# <span class="tooltip">Select 'Kenya' for resident pricing, all others are non-resident.</span> #}
+                                        </div>
+                                    </div>
+                                    <div class="submit-button">
+                                        <button type="submit" class="main-btn primary-btn">Reserve Now<i class="far fa-paper-plane"></i></button>
+                                    </div>
+                                    <!-- Hidden Inputs for JavaScript -->
+                                    {# <input type="hidden" id="adultPrice" value="{{ adultPrice }}">
+                                    <input type="hidden" id="youthPrice" value="{{ youthPrice }}">
+                                    <input type="hidden" id="childPrice" value="{{ childPrice }}"> #}
+                                </form>
+

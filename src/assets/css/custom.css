@@ -1,0 +1,143 @@
+/*tour cards too long titles*/
+.ellipsis {
+    white-space: nowrap; /* Prevent the text from wrapping */
+    overflow: hidden;    /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis to overflow text */
+    display: block; /* Or inline-block, depending on your layout */
+    width: 100%; 
+  }
+/*accomodation stuff inside tour-details*/
+.accommodation-details .accommodation-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.accommodation-item {
+    display: flex;
+    align-items: start; /* Aligns items to the top */
+    margin-bottom: 10px;
+}
+
+.accommodation-item i {
+    min-width: 35px; /* Slightly larger width for the icon */
+    font-size: 1.25rem; /* Larger font size for the icon */
+    text-align: center;
+    margin-right: 15px; /* Slightly more space between icon and text */
+    color: #ca3975; /* Primary theme color */
+    padding-top: 2px; /* Adjust vertical alignment if necessary */
+}
+
+.accommodation-info {
+    flex: 1; /* Takes the remaining space */
+    line-height: 1.5; /* Adjust line-height for better readability of description */
+}
+/*itinerary days styling inside tour-detailsnjk*/
+.tab-content .tab-pane {
+    display: none; /* Hide all tab content by default */
+}
+.tab-content .tab-pane.active {
+    display: block; /* Only display the active tab's content */
+}
+.nav-tabs .nav-link.active {
+    color: #0056b3; /* Example active tab color */
+}
+/*share button in tour-details*/
+.social-links .btn {
+    width: 100%;
+    margin-bottom: 10px; /* Spacing between buttons */
+}
+/*contact us footer styling*/
+.contact-info-widget .icon-box {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.list-group-item {
+    background-color: transparent; /* Ensures no background for the list items */
+    border: none; /* Removes borders */
+}
+
+.list-group-item a {
+    color: #fff; /* White text for links */
+    text-decoration: none; /* No underline */
+}
+
+.list-group-item h6 {
+    color: #fff; /* White text for subheadings */
+    margin-bottom: 0; /* No bottom margin for a tighter look */
+}
+
+/*social icons footer*/
+.footer-widget .social-icons {
+    margin-top: 20px; /* Space above the social media icons */
+}
+
+.social-icon {
+    display: inline-block;
+    margin-right: 20px; /* Space between icons */
+    color: #fff; /* White icons */
+    font-size: 18px; /* Icon size */
+}
+
+.social-icon:hover {
+    color: #ccc; /* Light grey on hover for better visibility */
+}
+
+.price {
+    margin-bottom: 10px; /* Adjust spacing between items */
+    font-size: 1.1rem; /* Make text slightly larger for readability */
+}
+
+/*bookign form country dropdown width*/
+.booking-item label,
+.booking-item .bk-item {
+  /* width: 100%; */
+  display: block;
+  margin-bottom: 5px;
+}
+
+.booking-item select,
+.booking-item input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.booking-item select.form_control {
+  padding-left: 30px;
+}
+
+.booking-item select.form_control option {
+  padding-left: 100px;
+}
+
+@media (max-width: 767px) {
+  .booking-item select.form_control {
+    padding-left: 10px;
+  }
+}
+
+/*footer icons color*/
+
+.icon-box {
+    background-color: #ca3975!important;
+}
+
+/* Hide unnecessary elements in the toolbar */
+/* .goog-te-banner-frame.skiptranslate .goog-te-button,
+.goog-te-banner-frame.skiptranslate .goog-logo-link {
+    display: none;         
+} */
+/* .goog-te-banner-frame.skiptranslate {
+    display: none !important;
+    } 
+body {
+    top: 0px !important; 
+    } */

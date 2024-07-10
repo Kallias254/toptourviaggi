@@ -1,0 +1,141 @@
+---
+title: "Checkout"
+description: "Complete your booking details to secure your adventure with us. Fill out the necessary information to finalize your exciting journey and ensure your spot on our unforgettable tours."
+layout: "base.njk"
+---
+
+{% block header %}
+    {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+{# <section class="page-banner overlay pt-170 pb-170 bg_cover"  style="background-image: url(/assets/images/bg/page-bg.jpg);"> #}
+<section class="page-banner overlay pt-170 pb-220 bg_cover" style="background-image: url('{{ checkoutPage.pageBanner[0].src }}');">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="page-banner-content text-center text-white">
+                    <h1 class="page-title">{{title}}</h1>
+                    <ul class="breadcrumb-link text-white">
+                        <li><a href="/">Home</a></li>
+                        <li class="active">{{title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--====== End Breadcrumb Section ======-->
+
+<section class="booking-section pt-60 pb-50">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <!-- Checkout Form Box -->
+          <div class="booking-content-box mb-50 wow fadeInLeft">
+            <!-- form goes here -->
+            <div class="section-title mb-50">
+                <span class="sub-title">Complete Your Booking</span>
+                <h2>Confirm Your Details and Submit</h2>
+            </div>
+            {# <form name="bookingForm" class="booking-form" method="POST" data-netlify="true"> #}
+            <form name="bookingForm" class="booking-form" method="POST" data-netlify="true" action="/success/">
+                    <input type="hidden" name="tourTitle" value="dummy" />
+                    <input type="hidden" name="tourURL" value="dummy" />
+                    <input type="hidden" name="country" value="dummy" />
+                    <input type="hidden" name="location" value="dummy" />
+                    <input type="hidden" name="adultCount" value="0" />
+                    <input type="hidden" name="youthCount" value="0" />
+                    <input type="hidden" name="childCount" value="0" />
+                    <input type="hidden" name="totalPrice" value="0" />
+                    <input type="hidden" name="duration" value="0" />
+                    <input type="hidden" name="totalGuests" value="0" />
+                    <input type="hidden" name="bookingDate" value="dummy" />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form_group">
+                            <label><i class="far fa-user"></i></label>
+                            <input type="text" class="form_control" name="firstName" placeholder="First Name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form_group">
+                            <label><i class="far fa-user"></i></label>
+                            <input type="text" class="form_control" name="lastName" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form_group">
+                            <label><i class="far fa-envelope"></i></label>
+                            <input type="email" class="form_control" name="bookingEmail" placeholder="Email Address" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form_group">
+                            <label><i class="far fa-envelope"></i></label>
+                            <input type="email" class="form_control" name="retypeEmail" placeholder="Retype Email Address" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form_group">
+                            <label><i class="far fa-phone"></i></label>
+                            <input type="text" class="form_control" name="phone" placeholder="Contact Phone" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea name="comments" placeholder="Comments" class="form_control" cols="8" rows="3"></textarea>
+                    </div>
+
+                    <!-- Placeholder for dynamically added hidden fields -->
+                    <div id="hiddenFields"></div>
+
+                    <div class="col-md-12">
+                        <div class="form_group">
+                            <button type="submit" class="main-btn primary-btn">Submit Booking<i class="far fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-5">
+
+        <div class="single-place-item mb-60 wow fadeInUp">
+        <div class="place-img">
+            <img src="" alt="" id="tourImage">
+        </div>
+        <div class="place-content">
+            <div class="info">
+                
+                <ul class="ratings">
+                    {% for i in range(0, 5) %}
+                    <li><i class="fas fa-star"></i></li>
+                    {% endfor %}
+                    <li><a href="#">(4.9)</a></li>
+                </ul>
+
+                <h4 class="title ellipsis"><a href="#" id="tourTitleLink">Tour Title</a></h4>
+                <p class="location pb-10"><i class="far fa-map-marker-alt"></i> <span id="destination"></span></p>
+                <p class="price"><i class="fas fa-usd-circle"></i>Adults: <span class="currency" id="adultPrice"></span></p>
+                <p class="price"><i class="fas fa-usd-circle"></i>Youths: <span class="currency" id="youthPrice">$</span></p>
+                <p class="price"><i class="fas fa-usd-circle"></i>Child: <span class="currency" id="childPrice">$</span></p>
+                <p class="price fs-5 pt-20"><i class="fas fa-usd-circle"></i>Total: <span class="currency" id="totalPrice">$</span></p>
+
+                <div class="meta">
+                    <span><i class="far fa-clock"></i> <span id="duration"></span></span>
+                    <span><i class="far fa-user"></i> <span id="totalGuests"></span></span>
+                    <span><span id="bookingDate"></span></span> <!-- Display the booking date -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block script %}
+    <script src="/assets/js/checkout-details.js"></script>
+{% endblock %}

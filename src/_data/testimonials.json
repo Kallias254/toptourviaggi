@@ -1,0 +1,104 @@
+{
+  "testimonials": [
+    {
+      "text": "Our safari adventure in Kenya was beyond expectations! The tour guides were knowledgeable and made our experience unforgettable. Seeing the wildlife up close was truly mesmerizing.",
+      "author": {
+        "name": "Emily Johnson",
+        "position": "Tourist",
+        "image": "/assets/images/testimonial/test2.jpg"
+      },
+      "rating": 5,
+      "service": "Kenya Safari Tour"
+    },
+    {
+      "text": "Exploring the Masai Mara with Top Tour e Viaggi was a dream come true. The camps were comfortable, and the staff went out of their way to ensure we had a memorable stay.",
+      "author": {
+        "name": "Mark Thompson",
+        "position": "Travel Enthusiast",
+        "image": "/assets/images/testimonial/test11.jpg"
+      },
+      "rating": 5,
+      "service": "Masai Mara Adventure"
+    },
+    {
+      "text": "The historical tour of Mombasa was fascinating. Learning about the Swahili culture and visiting the Fort Jesus Museum was enlightening. Thanks for a well-organized tour!",
+      "author": {
+        "name": "Linda Kim",
+        "position": "History Buff",
+        "image": "/assets/images/testimonial/test8.jpg"
+      },
+      "rating": 5,
+      "service": "Mombasa Historical Tour"
+    },
+    {
+      "text": "The sunset dhow cruise in Lamu was magical. It was the perfect way to end our day after exploring the ancient town. Top Tour e Viaggi provided excellent service throughout.",
+      "author": {
+        "name": "Mark Otieno",
+        "position": "Adventurer",
+        "image": "/assets/images/testimonial/test3.jpg"
+      },
+      "rating": 5,
+      "service": "Lamu Sunset Cruise"
+    },
+    {
+      "text": "Climbing Mount Kenya was challenging but rewarding, thanks to the expert guides from Top Tour e Viaggi. Their encouragement and professionalism made all the difference.",
+      "author": {
+        "name": "Sarah Wilson",
+        "position": "Mountain Climber",
+        "image": "/assets/images/testimonial/test9.jpg"
+      },
+      "rating": 5,
+      "service": "Mount Kenya Expedition"
+    },
+    {
+      "text": "We booked the Amboseli day trip, and it was incredible. The views of Mount Kilimanjaro and the elephants in their natural habitat were spectacular. Highly recommend!",
+      "author": {
+        "name": "Robert Allen",
+        "position": "Wildlife Photographer",
+        "image": "/assets/images/testimonial/test10.jpg"
+      },
+      "rating": 5,
+      "service": "Amboseli Day Trip"
+    },
+    {
+      "text": "The bird watching tour at Lake Nakuru was a highlight of our trip to Kenya. The variety of birds and the knowledgeable guides made it a birder’s paradise.",
+      "author": {
+        "name": "Jessica Green",
+        "position": "Birdwatcher",
+        "image": "/assets/images/testimonial/test6.jpg"
+      },
+      "rating": 5,
+      "service": "Lake Nakuru Birdwatching"
+    },
+    {
+      "text": "Thank you for a breathtaking balloon safari over the Mara. The early morning start was worth it for the stunning aerial views of the migrating wildebeest.",
+      "author": {
+        "name": "Oliver Martinez",
+        "position": "Photographer",
+        "image": "/assets/images/testimonial/test7.jpg"
+      },
+      "rating": 5,
+      "service": "Mara Balloon Safari"
+    },
+    {
+      "text": "The coastal tour of Diani Beach was relaxing and well organized. From snorkeling to sunbathing, every aspect was taken care of by Top Tour e Viaggi.",
+      "author": {
+        "name": "Hannah Lee",
+        "position": "Beach Lover",
+        "image": "/assets/images/testimonial/test5.jpg"
+      },
+      "rating": 5,
+      "service": "Diani Beach Tour"
+    },
+    {
+      "text": "Visiting the Giraffe Centre and getting to feed the giraffes was an experience my kids will never forget. It was educational and fun for the whole family!",
+      "author": {
+        "name": "Daniel Young",
+        "position": "Family Man",
+        "image": "/assets/images/testimonial/test1.jpg"
+      },
+      "rating": 5,
+      "service": "Giraffe Centre Visit"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "team": [
+    {
+      "name": "Carmela Espita",
+      "email": "carmespita@gmail.com",
+      "image": "/assets/images/team/team-1.jpg",
+      "position": "Project Manager",
+      "social": {
+        "facebook": "https://facebook.com/carmela",
+        "twitter": "https://twitter.com/carmela",
+        "instagram": "https://instagram.com/carmela",
+        "linkedin": "https://linkedin.com/in/carmela"
+      }
+    },
+    {
+      "name": "Khabab Madi",
+      "email": "madiaminjr10@gmail.com",
+      "image": "/assets/images/team/team-1.jpg",
+      "position": "Founder",
+      "social": {
+        "facebook": "https://facebook.com/khabab",
+        "twitter": "https://twitter.com/khabab",
+        "instagram": "https://instagram.com/khabab",
+        "linkedin": "https://linkedin.com/in/khabab"
+      }
+    },
+    {
+      "name": "Nazih Almadi",
+      "email": "nazihalimadi@gmail.com",
+      "image": "/assets/images/team/team-1.jpg",
+      "position": "Marketing Specialist",
+      "social": {
+        "facebook": "https://facebook.com/nazih",
+        "twitter": "https://twitter.com/nazih",
+        "instagram": "https://instagram.com/nazih",
+        "linkedin": "https://linkedin.com/in/nazih"
+      }
+    }
+  ]
+}

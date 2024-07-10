@@ -1,0 +1,77 @@
+{
+    "gallery": [
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-1",
+        "caption": "Caption for Image gl-1"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      },
+      {
+        "pageSrc": "/assets/images/gallery/gallery-1.jpg",
+        "stripSrc": "/assets/images/gallery/gl-1.jpg",
+        "alt": "Description for gl-2",
+        "caption": "Caption for Image gl-2"
+      }
+    ]
+  }
+  

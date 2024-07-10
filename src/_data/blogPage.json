@@ -1,0 +1,9 @@
+{
+  "pageBanner": [
+    {
+      "src": "/assets/images/bg/blog-banner.jpg",
+      "alt": "Blog Page Banner",
+      "hint": "Upload a large banner image for the blog page. Recommended dimensions: 1920x469 pixels."
+    }
+  ]
+}

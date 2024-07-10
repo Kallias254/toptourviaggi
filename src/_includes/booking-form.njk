@@ -1,0 +1,52 @@
+<!--=== Universal Booking Form Template ===-->
+<form class="booking-form-two">
+    <div class="form_group">
+        <span>Date of Travel</span>
+        <label><i class="far fa-calendar-alt"></i></label>
+        <input type="text" class="form_control datepicker" placeholder="Select Date" autocomplete="off" name="date_of_travel">
+    </div>
+    <div class="form_group">
+        <span>No. of Adults</span>
+        <input type="number" class="form_control" placeholder="Adults" autocomplete="off" name="adults">
+    </div>
+    <div class="form_group">
+        <span>No. of Children</span>
+        <input type="number" class="form_control" placeholder="Children" autocomplete="off" name="children">
+    </div>
+    <div class="form_group">
+        <span>Activity</span>
+        <select class="form_control wide" name="tour_type" autocomplete="off">
+            <option value="">Select Activity</option>
+            {% for type in collections.uniqueTourTypes %}
+            <option value="{{ type | lower }}">{{ type }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form_group">
+        <button class="booking-btn">Search</button>
+    </div>
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('.booking-form-two');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const searchData = {
+                date_of_travel: formData.get('date_of_travel'),
+                adults: formData.get('adults'),
+                children: formData.get('children'),
+                tour_type: formData.get('tour_type')
+            };
+            localStorage.setItem('searchData', JSON.stringify(searchData));
+            // Redirect to the search results page if necessary or handle the data as needed
+            console.log('Search data stored:', searchData);
+            // Redirect to the search results page
+            // window.location.href = '/search-results'; // Ensure this is the correct URL for your search results page
+
+            window.location.href = '/tours'; // Ensure this is the correct URL for your search results page
+            
+        });
+    });
+    </script>
+    

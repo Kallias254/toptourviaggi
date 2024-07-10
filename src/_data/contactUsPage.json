@@ -1,0 +1,9 @@
+{
+  "pageBanner": [
+    {
+      "src": "/assets/images/bg/contact-us-banner-1-.jpg",
+      "alt": "Contact Us Page Banner",
+      "hint": "Upload a large banner image for the contact us page. Recommended dimensions: 1920x469 pixels."
+    }
+  ]
+}

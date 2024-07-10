@@ -1,0 +1,9 @@
+{
+  "pageBanner": [
+    {
+      "src": "/assets/images/bg/tours-1-.jpg",
+      "alt": "Tours Page Banner",
+      "hint": "Upload a large banner image for the tours page. Recommended dimensions: 1920x469 pixels."
+    }
+  ]
+}

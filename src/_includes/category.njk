@@ -1,0 +1,77 @@
+---
+title: "{{ category }}"
+layout: "base.njk"
+permalink: "/blog/category/{{ category | slug }}"
+---
+
+{% block header %}
+  {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+<!--====== Start Breadcrumb Section ======-->
+<section class="page-banner overlay pt-170 pb-170 bg_cover" style="background-image: url(/assets/images/bg/page-bg.jpg);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="page-banner-content text-center text-white">
+          <h1 class="page-title">{{ title }}</h1>
+          <ul class="breadcrumb-link text-white">
+            <li><a href="/">Home</a></li>
+            <li class="active">{{ title }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--====== End Breadcrumb Section ======-->
+
+<!--====== Start Blog Section ======-->
+{# <section class="blog-list-section pt-100 pb-70">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8">
+        <!-- Blog List Wrapper -->
+        <div class="blog-list-wrapper">
+          {% for post in posts %}
+          <!-- Single Blog Post -->
+          <div class="single-blog-post-four mb-30 wow fadeInDown" data-wow-duration="0.8s">
+            <div class="post-thumbnail">
+              <img src="{{ post.data.image }}" alt="Post Image">
+            </div>
+            <div class="entry-content">
+              <div class="post-meta">
+                <span><i class="far fa-calendar-alt"></i><a href="#">{{ post.date | date("F d, Y") }}</a></span>
+              </div>
+              <h3 class="title"><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+              <h6 class="author"><i class="far fa-user"></i><a href="#">{{ post.data.author }}</a></h6>
+              <a href="{{ post.url }}" class="main-btn filled-btn">Read More<i class="fas fa-paper-plane"></i></a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        <ul class="gowilds-pagination wow fadeInDown mt-60 mb-30">
+          {% if pagination.href.previous %}
+          <li><a href="{{ pagination.href.previous }}"><i class="far fa-arrow-left"></i></a></li>
+          {% endif %}
+          {% for pageUrl in pagination.hrefs %}
+          <li class="{{ 'active' if pageUrl == pagination.page.href }}">
+            <a href="{{ pageUrl }}">{{ loop.index0 + 1 }}</a>
+          </li>
+          {% endfor %}
+          {% if pagination.href.next %}
+          <li><a href="{{ pagination.href.next }}"><i class="far fa-arrow-right"></i></a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="col-xl-4">
+        <!-- Sidebar can include widgets like categories, tags, recent posts, etc. -->
+      </div>
+    </div>
+  </div>
+</section> #}
+<!--====== End Blog Section ======-->
+{% endblock %}

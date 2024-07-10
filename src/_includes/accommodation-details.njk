@@ -1,0 +1,49 @@
+---
+layout: "base.njk"
+permalink: "/tours/{{ title | slug }}/accommodation/"
+---
+
+{# permalink: "/tours/{{ title | slug }}/accommodation" #}
+{% block header %}
+    {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+    <!-- About Page Specific Content Here -->
+       <!--====== Start Breadcrumb Section ======-->
+       <section class="page-banner overlay pt-170 pb-170 bg_cover" style="background-image: url(/assets/images/bg/page-bg.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="page-banner-content text-center text-white">
+                        <h1 class="page-title">{{title}}</h1>
+                        <ul class="breadcrumb-link text-white">
+                            <li><a href="/">Home</a></li>
+                            <li class="active">{{title}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Breadcrumb Section ======-->
+
+
+<h2>Accommodations for {{ title }}</h2>
+ 
+<section class="place-content-wrap pt-45 wow fadeInUp mb-20">
+    <div class="row align-items-lg-center">
+        <div class="col-lg-10">
+            <ul class="check-list">
+                {% for accommodation in accommodations %}
+                <li><i class="fa fa-bed"></i> <strong>{{ accommodation.name }}</strong> - {{ accommodation.description }}. Starting at {{ accommodation.price }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <a href="/tours/{{ title | slug }}">Back to Tour Details</a>
+
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,150 @@
+---
+layout: "base.njk"
+---
+
+{% block header %}
+    {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+<!--====== Start Breadcrumb Section ======-->
+<section class="page-banner overlay pt-170 pb-170 bg_cover" style="background-image: url('{{ pageBanner }}');">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="page-banner-content text-center text-white">
+                    <h1 class="page-title">{{ title }}</h1>
+                    <ul class="breadcrumb-link text-white">
+                        <li><a href="/destinations">Destinations</a></li>
+                        <li class="active">{{title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--====== End Breadcrumb Section ======-->
+
+<!--====== Start Destination Details Section ======-->
+<section class="destination-details-section pt-100 pb-70">
+    <div class="container">
+        <div class="destination-details-wrapper">
+            <div class="destination-info wow fadeInUp">
+                <h3 class="title">{{ title }}</h3>
+                <div class="meta">
+                    <span class="location"><i class="fas fa-map-marker-alt"></i>{{ location }}</span>
+                    <ul class="ratings">
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><a href="#">(4.9)</a></li>
+                    </ul>
+                </div>
+                <p>{{ description | safe }}</p>
+                <div class="row">
+                    <div class="gallery-area wow fadeInUp">
+                        <div class="slider-active-3-item">
+                            <!--=== Single Gallery Item ===-->
+                            {% for image in images %}
+                            <div class="single-gallery-item mb-30">
+                                <div class="gallery-img">
+                                    <img src="{{ image.src }}" alt="{{ image.alt }}">
+                                    <div class="hover-overlay">
+                                        <a href="{{ image.src }}" class="icon-btn img-popup"><i class="far fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <h3>Why Choose {{ title }}</h3>
+                <p>{{ highlights }}</p>
+                <ul class="features-list mb-20">
+                    {% for activity in destinationActivities %}
+                    <li><span><i class="fas fa-badge-check"></i> {{ activity }}</span></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--====== End Destination Details Section ======-->
+
+<section class="cta-bg overlay bg_cover pt-150 pb-150" style="background-image: url('/assets/images/bg/cta-bg2.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xl-7 col-lg-8">
+                <!--=== CTA Content Box ===-->
+                <div class="cta-content-box text-white wow fadeInLeft">
+                    <span class="sub-title mb-20">Discover New Horizons</span>
+                    <h2 class="mb-35">Ready for the Adventure of a Lifetime?</h2>
+                    <p class="mb-20">Whether you crave serene landscapes or vibrant cityscapes, your perfect getaway awaits. Let's make your travel dreams a reality.</p>
+                    <a href="/destinations" class="main-btn primary-btn">Check Availability<i class="far fa-paper-plane"></i></a>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-4">
+                <!--=== Play Box ===-->
+                <div class="play-box text-lg-end text-center wow fadeInRight">
+                    <a href="{{ destination.videoUrl }}" class="video-popup" title="Watch Our Journey"><i class="fas fa-play"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--====== End CTA Section ======-->
+
+
+<section class="places-section pt-95 pb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="section-title text-center mb-45 wow fadeInDown">
+                    <span class="sub-title">Tours</span>
+                    <h2>Popular Tours</h2>
+                </div>
+            </div>
+            {% set locationNormalized = location | lower %}
+            {% for related in collections.toursByLocation[locationNormalized] %}
+            {% if related.url != page.url %}
+            <div class="col-xl-4 col-md-6 col-sm-12 places-column">
+                <div class="single-place-item mb-60 wow fadeInUp">
+                    <div class="place-img">
+                        <a href="{{ related.url }}"><img src="{{ related.data.cardImageSrc }}" alt="Image of {{ related.data.cardImageAlt }}"></a>
+                    </div>
+                    <div class="place-content">
+                        <div class="info">
+                            <ul class="ratings">
+                                {% for i in range(0, 5) %}
+                                <li><i class="fas fa-star"></i></li>
+                                {% endfor %}
+                                <li><a href="{{ related.url }}">(4.9)</a></li>
+                            </ul>
+                            <h4 class="title"><a href="{{ related.url }}">{{ related.data.title }}</a></h4>
+                            <p class="location pb-10"><i class="fas fa-map-marker-alt"></i>{{ related.data.location | replace("-", " ") | titleCase }}</p>
+                            <p class="price"><i class="fas fa-usd-circle"></i>Resident: <span class="currency"></span>KES {{ related.data.residentYouthPrice }}</p>
+                            <p class="price"><i class="fas fa-usd-circle"></i>Non-Resident: <span class="currency"></span>USD {{ related.data.youthPrice }}</p>
+                            <div class="meta">
+                                <span><i class="far fa-clock"></i>{{ related.data.duration }} Days</span>
+                                <span><i class="far fa-user"></i>{{ related.data.maxGuests }}</span>
+                                <span><a href="{{ related.url }}">Details<i class="far fa-long-arrow-right"></i></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="col-lg-12">
+                <p>No related tours found.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+

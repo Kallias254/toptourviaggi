@@ -1,0 +1,526 @@
+backend:
+  name: git-gateway
+  branch: main
+  publish_mode: editorial_workflow
+
+media_folder: "/public/assets" # Files are saved here during development
+public_folder: "/assets" # Public URL path to access these files
+
+collections:
+  - name: "tours"
+    label: "Tours"
+    folder: "src/tours"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "tour-details.njk" }
+      - { label: "Map Query", name: "mapQuery", widget: "string", hint: "Enter the Google Maps search query for the location, e.g., '-1.406111, 35.316278' for Masai Mara National Reserve." }
+      - { label: "Title", name: "title", widget: "string", hint: "Enter the title of the tour, e.g., 'Safari Adventure in Kenya'." }
+      - { label: "Description", name: "description", widget: "text", hint: "Provide a detailed description of the tour, including major attractions and experiences." }
+      - label: "Banner Slider Images"
+        name: "bannerImages"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload images for the banner slider. Recommended dimensions: 950x630 or 465x630 pixels." }
+          - { label: "Alt Text", name: "alt", widget: "string", default: "{{ title }}", hint: "Provide a short description of the image." }
+      - { label: "Card Image Source", name: "cardImageSrc", widget: "image", media_folder: "/src/assets/images/place", public_folder: "/assets/images/place", hint: "Upload a card image for the tour. Recommended dimensions: 470x356 pixels." }
+      - { label: "Card Image Alt Text", name: "cardImageAlt", widget: "string", default: "{{title}}", hint: "Provide descriptive alt text for the card image." }
+      - { label: "Duration", name: "duration", widget: "number", hint: "Enter the duration of the tour in days." }
+      - { label: "Tour Type", name: "tourType", widget: "string", hint: "Specify the type of tour, e.g., 'Family', 'Adventure', 'Relaxation'." }
+      - { label: "Location", name: "location", widget: "string", hint: "Specify the exact location of the tour, including any pertinent details like the county or nearby landmarks, e.g., 'Kwale County'." }
+      - { label: "Itinerary", name: "itinerary", widget: "list", fields: [{ label: "Day", name: "day", widget: "string" }, { label: "Description", name: "description", widget: "text" }] }
+      - { label: "Highlights", name: "highlights", widget: "list", hint: "Describe the major highlights of the tour." }
+      - { label: "Inclusions", name: "inclusions", widget: "list", hint: "Detail all items included in the price of the tour." }
+      - { label: "Exclusions", name: "exclusions", widget: "list", hint: "Clearly list all items not included in the price of the tour." }
+      - { label: "Adult Price", name: "adultPrice", widget: "number", hint: "Set the price for adult participants." }
+      - { label: "Youth Price", name: "youthPrice", widget: "number", hint: "Set the price for youth participants." }
+      - { label: "Child Price", name: "childPrice", widget: "number", hint: "Set the price for child participants." }
+      - { label: "Resident Adult Price", name: "residentAdultPrice", widget: "number", hint: "Set the price for resident adults." }
+      - { label: "Resident Youth Price", name: "residentYouthPrice", widget: "number", hint: "Set the price for resident youths." }
+      - { label: "Resident Child Price", name: "residentChildPrice", widget: "number", hint: "Set the price for resident children." }
+      - { label: "Maximum Guests", name: "maxGuests", widget: "string", hint: "Enter the maximum number of guests allowed per tour." }
+      - label: "Accommodations"
+        name: "accommodations"
+        widget: "list"
+        fields:
+          - { label: "Accommodation Name", name: "name", widget: "string", hint: "Enter the name of the accommodation, e.g., 'Kilimanjaro Safari Lodge'." }
+          - { label: "Accommodation Description", name: "description", widget: "text", hint: "Provide a description of the accommodation or a URL to its detailed page." }
+          - { label: "Price per Night", name: "price", widget: "string", hint: "Enter the price per night, e.g., '$200 per night'." }
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "Enter the blog post title, e.g., '10 Best Beaches in Kenya', 'Guide to Safaris in Tanzania', 'Cultural Heritage of the Maasai People'."
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        hint: "Select the date and time the blog post should be published. Adjust the date picker to the desired day."
+      - label: "Main Blog Image"
+        name: "blogImage"
+        widget: "image"
+        media_folder: "/src/assets/images/blog"
+        public_folder: "/assets/images/blog"
+        hint: "Upload the primary image for the blog post. This is typically displayed within the post content or as a featured image. Recommended dimensions: 800x465 pixels."
+      - label: "Thumbnail"
+        name: "thumbnail"
+        widget: "image"
+        media_folder: "/src/assets/images/blog"
+        public_folder: "/assets/images/blog"
+        hint: "Upload a smaller thumbnail image used for previews or list views of blog posts, e.g., in related posts or social media links. Recommended dimensions: 130x130 pixels."
+      - label: "Category"
+        name: "category"
+        widget: "string"
+        hint: "Specify the category for the blog post, which helps readers find similar content. Examples: 'Travel Tips', 'Destination Guides', 'Wildlife Conservation'."
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        hint: "Add tags to describe the subject of the blog post for better indexing and searchability. Examples: 'snorkeling', 'mountain climbing', 'cultural tours'."
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "blog-details"
+      - label: "Social Links"
+        name: "socialLinks"
+        widget: "object"
+        fields:
+          - label: "Facebook"
+            name: "facebook"
+            widget: "string"
+            hint: "Enter the URL for sharing the blog post on Facebook. Typically this would be a dynamic URL linked to the share feature."
+          - label: "Twitter"
+            name: "twitter"
+            widget: "string"
+            hint: "Enter the URL for sharing the blog post on Twitter. Use a format that includes the post URL and a brief message."
+          - label: "Instagram"
+            name: "instagram"
+            widget: "string"
+            hint: "Include a URL if there’s a specific Instagram post related to this blog. Generally, Instagram does not support direct posting via external links."
+          - label: "LinkedIn"
+            name: "linkedin"
+            widget: "string"
+            hint: "Provide the URL for sharing the blog post on LinkedIn, useful for professional and business-related content."
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Write the main content of the blog post using Markdown formatting. Include headings, paragraphs, images, and links to make the post engaging and informative. Use Markdown tools to format text, create lists, and embed media."
+  - name: "destinations"
+    label: "Destinations"
+    folder: "src/destinations"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "destination-details.njk"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "Enter the destination name, e.g., 'Diani Beach', 'Maasai Mara', or 'Mount Kilimanjaro'."
+      - label: "Permalink"
+        name: "permalink"
+        widget: "string"
+        default: "/destinations/{{title | slug}}/"
+        hint: "Automatically generated URL based on the destination title. Adjust if necessary for uniqueness or SEO."
+      - label: "Main Image"
+        name: "image"
+        widget: "image"
+        media_folder: "/src/assets/images/place"
+        public_folder: "/assets/images/place"
+        hint: "Upload a main image that encapsulates the destination. Ideal dimensions: 300x350 pixels."
+      - label: "Location"
+        name: "location"
+        widget: "string"
+        hint: "Provide the geographical location, e.g., 'Kwale County', 'Narok County', or 'Kilimanjaro Region'."
+      - label: "Icon"
+        name: "icon"
+        widget: "string"
+        hint: "Enter the Font Awesome icon class for representing the destination type, e.g., 'fas fa-umbrella-beach' for beaches, 'fas fa-wildlife' for wildlife reserves."
+      - label: "Gallery Images"
+        name: "images"
+        widget: "list"
+        fields:
+          - label: "Image"
+            name: "src"
+            widget: "image"
+            media_folder: "/src/assets/images/gallery"
+            public_folder: "/assets/images/gallery"
+            hint: "Add multiple images to create a gallery, showcasing different aspects of the destination. Ideal dimensions: 410x100 pixels."
+          - label: "Alt Text"
+            name: "alt"
+            widget: "string"
+            hint: "Provide descriptive alt text for accessibility, briefly describing what is shown in the image, e.g., 'Aerial view of Diani Beach', 'Lions resting in Maasai Mara', 'Climbers ascending Mount Kilimanjaro'."
+      - label: "Size"
+        name: "size"
+        widget: "select"
+        options: ["small", "medium"]
+        hint: "Select the size category for the destination to classify its scale or the extent of activities available, e.g., 'small' for intimate locations, 'medium' for moderate attractions, 'large' for extensive areas."
+      - label: "Description"
+        name: "description"
+        widget: "markdown"
+        hint: "Write a detailed description of the destination, focusing on its appeal, amenities, and unique qualities, e.g., 'Diani Beach offers a perfect blend of relaxation and adventure with white sands and vibrant nightlife.'"
+      - label: "Highlights"
+        name: "highlights"
+        widget: "markdown"
+        hint: "List the key attractions or features of the destination, using bullet points or short sentences, e.g., 'Stunning coral reefs for snorkeling', 'Rich Maasai cultural experiences', 'Year-round climbing opportunities'."
+      - label: "Destination Activities"
+        name: "destinationActivities"
+        widget: "list"
+        hint: "Detail specific activities available at the destination. Be clear and concise, e.g., 'Snorkeling in the coral reefs', 'Wildlife safaris in open jeeps', 'Guided cultural tours through local villages'."
+  - name: "excursions"
+    label: "Excursions"
+    folder: "src/excursions"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "excursion-details.njk" }
+      - { label: "Map Query", name: "mapQuery", widget: "string", hint: "Enter the Google Maps search query for the location, e.g., '-1.406111, 35.316278' for Masai Mara National Reserve." }
+      - { label: "Title", name: "title", widget: "string", hint: "Enter the title of the excursion, e.g., 'Diani Beach Snorkeling Adventure'." }
+      - { label: "Description", name: "description", widget: "text", hint: "Provide a detailed description of the excursion, focusing on key attractions and activities." }
+      - label: "Banner Slider Images"
+        name: "bannerImages"
+        widget: "list"
+        fields:
+          - { label: "Image", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload images for the banner slider. Recommended dimensions: 950x630 or 465x630 pixels." }
+          - { label: "Alt Text", name: "alt", widget: "string", default: "{{ title }}", hint: "Provide a short description of the image." }
+      - { label: "Card Image Source", name: "cardImageSrc", widget: "image", media_folder: "/src/assets/images/place", public_folder: "/assets/images/place", hint: "Upload a card image for the excursion. Recommended dimensions: 470x356 pixels." }
+      - { label: "Card Image Alt Text", name: "cardImageAlt", widget: "string", default: "{{title}}", hint: "Provide descriptive alt text for the card image." }
+      - { label: "Duration", name: "duration", widget: "string", hint: "Specify the duration of the excursion, e.g., '1/2' day." }
+      - { label: "Permalink", name: "permalink", widget: "string", default: "/excursions/{{title | slug}}/", hint: "This automatically generates a URL based on the excursion title. Modify if necessary." }
+      - { label: "Adult Price", name: "adultPrice", widget: "number", hint: "Set the price for adult participants." }
+      - { label: "Youth Price", name: "youthPrice", widget: "number", hint: "Set the price for youth participants." }
+      - { label: "Child Price", name: "childPrice", widget: "number", hint: "Set the price for child participants." }
+      - { label: "Resident Adult Price", name: "residentAdultPrice", widget: "number", hint: "Set the price for resident adults." }
+      - { label: "Resident Youth Price", name: "residentYouthPrice", widget: "number", hint: "Set the price for resident youths." }
+      - { label: "Resident Child Price", name: "residentChildPrice", widget: "number", hint: "Set the price for resident children." }
+      - { label: "Maximum Guests", name: "maxGuests", widget: "string", hint: "Enter the maximum number of guests allowed per excursion." }
+      - { label: "Tour Type", name: "tourType", widget: "string", hint: "Specify the type of tour, e.g., 'Snorkeling'." }
+      - { label: "Location", name: "location", widget: "string", hint: "Specify the exact location of the excursion, including any pertinent details like the county or nearby landmarks, e.g., 'Kwale County'." }
+      - label: "Highlights"
+        name: "highlights"
+        widget: "list"
+        hint: "Describe the major highlights of the excursion."
+      - label: "Inclusions"
+        name: "inclusions"
+        widget: "list"
+        hint: "Detail all items included in the price of the excursion."
+      - label: "Exclusions"
+        name: "exclusions"
+        widget: "list"
+        hint: "Clearly list all items not included in the price of the excursion."
+  - name: "activities"
+    label: "Activities"
+    files:
+      - file: "src/_data/activities.json"
+        label: "Activities"
+        name: "activities"
+        fields:
+          - label: "Activities List"
+            name: "activities"
+            widget: "list"
+            fields:
+              - label: "Image"
+                name: "image"
+                widget: "image"
+                media_folder: "/src/assets/images/features"
+                public_folder: "/assets/images/features"
+                hint: "Upload an image representing the activity. Recommended dimensions: 300x350 pixels."
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                hint: "Enter the title of the activity, e.g., 'Mountain Climbing', 'Kayaking'."
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                hint: "Provide a brief description of the activity."
+  - name: "gallery"
+    label: "Gallery"
+    files:
+      - file: "src/_data/gallery.json"
+        label: "Gallery"
+        name: "gallery"
+        fields:
+          - label: "Gallery Images"
+            name: "gallery"
+            widget: "list"
+            fields:
+              - { label: "Page Image Source", name: "pageSrc", widget: "image", media_folder: "/src/assets/images/gallery", public_folder: "/assets/images/gallery", hint: "Upload or select the primary image for gallery display. Recommended dimensions: 410x400 pixels." }
+              - { label: "Thumbnail Image Source", name: "stripSrc", widget: "image", media_folder: "/src/assets/images/gallery", public_folder: "/assets/images/gallery", hint: "Upload or select the thumbnail image for gallery display. Recommended dimensions: 332x300 pixels." }
+              - { label: "Image Description (Alt Text)", name: "alt", widget: "string", hint: "Provide a brief description of the image for accessibility and SEO." }
+              - { label: "Caption", name: "caption", widget: "string", hint: "Write a caption for the image that may appear on hover or in lightbox views." }
+  - name: "author"
+    label: "Author"
+    files:
+      - file: "src/_data/author.json"
+        label: "Author"
+        name: "author"
+        fields:
+          - { label: "Name", name: "name", widget: "string", default: "Admin", hint: "Enter the author's name. This is used site-wide on all blog posts." }
+          - { label: "Position", name: "position", widget: "string", default: "Lead Blogger", hint: "Enter the author's professional title or position." }
+          - { label: "Biography", name: "bio", widget: "text", hint: "Provide a short biography of the author. Describe their expertise and any relevant background information." }
+          - { label: "Profile Image", name: "image", widget: "image", media_folder: "/src/assets/images/blog", public_folder: "/assets/images/blog", hint: "Upload a profile picture for the author. Recommended dimensions are 190x160 pixels." }
+  - name: "site_info"
+    label: "Site Information"
+    files:
+      - file: "src/_data/info.json"
+        label: "General Information"
+        name: "general_info"
+        fields:
+          - label: "Company Name"
+            name: "name"
+            widget: "string"
+            default: "Top Tour e Viaggi Kenya"
+            hint: "Enter the official company name."
+          - label: "Phone Number"
+            name: "phone"
+            widget: "string"
+            default: "+254 703 413 843"
+            hint: "Enter the company's primary contact phone number."
+          - label: "Address"
+            name: "address"
+            widget: "string"
+            default: "123 Malindi, Kenya"
+            hint: "Enter the physical address of the company."
+          - label: "Email Address"
+            name: "email"
+            widget: "string"
+            default: "info@toptoureviaggikenya.co.uk"
+            hint: "Enter the company's email address."
+          - label: "Geographical Coordinates"
+            name: "coordinates"
+            widget: "string"
+            default: "-3.217989, 40.116890"
+            hint: "Enter the geographical coordinates of the company."
+          - label: "Logo"
+            name: "logo"
+            widget: "image"
+            media_folder: "/src/assets/images/logo"
+            public_folder: "/assets/images/logo"
+            hint: "Upload the logo file. Recommended dimensions vary based on design."
+          - label: "Mobile Logo"
+            name: "mobileLogo"
+            widget: "image"
+            media_folder: "/src/assets/images/logo"
+            public_folder: "/assets/images/logo"
+            hint: "Upload the mobile logo if different from the main logo. Recommended dimensions vary based on design."
+          - label: "Favicon"
+            name: "favicon"
+            widget: "image"
+            media_folder: "/src/assets/images"
+            public_folder: "/assets/images"
+            hint: "Upload the favicon file. Recommended dimensions: 32x32 pixels or 16x16 pixels."
+  - name: "social_links"
+    label: "Social Links"
+    files:
+      - file: "src/_data/socialLinks.json"
+        label: "Social Media Links"
+        name: "social_links"
+        fields:
+          - { label: "Twitter URL", name: "twitter", widget: "string", default: "https://twitter.com", hint: "Enter the Twitter profile URL." }
+          - { label: "Facebook URL", name: "facebook", widget: "string", default: "https://facebook.com", hint: "Enter the Facebook profile URL." }
+          - { label: "Instagram URL", name: "instagram", widget: "string", default: "https://instagram.com", hint: "Enter the Instagram profile URL." }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string", default: "https://linkedin.com", hint: "Enter the LinkedIn profile URL." }
+  - name: "team"
+    label: "Team"
+    files:
+      - file: "src/_data/team.json"
+        label: "Team Members"
+        name: "team"
+        fields:
+          - label: "Team Members"
+            name: "team"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string", hint: "Enter the full name of the team member." }
+              - { label: "Email", name: "email", widget: "string", hint: "Enter the email address of the team member." }
+              - { label: "Position", name: "position", widget: "string", hint: "Enter the position or role of the team member in the company." }
+              - { label: "Image", name: "image", widget: "image", media_folder: "/src/assets/images/team", public_folder: "/assets/images/team", hint: "Upload a profile picture for the team member. Recommended dimensions: 91x91 pixels." }
+              - label: "Social"
+                name: "social"
+                widget: "object"
+                fields:
+                  - { label: "Facebook", name: "facebook", widget: "string", default: "https://facebook.com", hint: "Enter the Facebook profile URL." }
+                  - { label: "Twitter", name: "twitter", widget: "string", default: "https://twitter.com", hint: "Enter the Twitter profile URL." }
+                  - { label: "Instagram", name: "instagram", widget: "string", default: "https://instagram.com", hint: "Enter the Instagram profile URL." }
+                  - { label: "LinkedIn", name: "linkedin", widget: "string", default: "https://linkedin.com", hint: "Enter the LinkedIn profile URL." }
+  - name: "testimonials"
+    label: "Testimonials"
+    files:
+      - file: "src/_data/testimonials.json"
+        label: "Testimonials"
+        name: "testimonials"
+        fields:
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "Text", name: "text", widget: "text" }
+              - label: "Author"
+                name: "author"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Position", name: "position", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image", media_folder: "/src/assets/images/testimonial", public_folder: "/assets/images/testimonial" }
+              - { label: "Rating", name: "rating", widget: "number", min: 1, max: 5 }
+              - { label: "Service", name: "service", widget: "string" }
+  - name: "homepage"
+    label: "Home Page"
+    files:
+      - file: "src/_data/homePage.json"
+        label: "Home Page Media"
+        name: "homePage"
+        fields:
+          - label: "Hero Images"
+            name: "heroImages"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/hero", public_folder: "/assets/images/hero", hint: "Upload a large hero image for the home page. Recommended dimensions: 575x725 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Hero Strip Images"
+            name: "heroStripImages"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/about", public_folder: "/assets/images/about", hint: "Upload a strip image for the home page. Recommended dimensions: 356x70 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "We Images"
+            name: "weImages"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/gallery", public_folder: "/assets/images/gallery", hint: "Upload an image for the home page gallery." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+  - name: "destinationPage"
+    label: "Destination Page"
+    files:
+      - file: "src/_data/destinationPage.json"
+        label: "Destination Page Media"
+        name: "destinationPage"
+        fields:
+          - label: "Page Banner"
+            name: "pageBanner"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload a large banner image for the destination page. Recommended dimensions: 1920x469 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Video Popup"
+            name: "videoPopup"
+            widget: "list"
+            fields:
+              - { label: "Video URL", name: "src", widget: "string", hint: "Provide the YouTube link for the video popup on the destination page." }
+          - label: "CTA Background"
+            name: "ctaBackground"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload a background image for the CTA section. Recommended dimensions: 1920x517 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+  - name: "blogPage"
+    label: "Blog Page"
+    files:
+      - file: "src/_data/blogPage.json"
+        label: "Blog Page Media"
+        name: "blogPage"
+        fields:
+          - label: "Page Banner"
+            name: "pageBanner"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload a large banner image for the blog page. Recommended dimensions: 1920x469 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+  - name: "toursPage"
+    label: "Tours Page"
+    files:
+      - file: "src/_data/toursPage.json"
+        label: "Tours Page Media"
+        name: "toursPage"
+        fields:
+          - label: "Page Banner"
+            name: "pageBanner"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload a large banner image for the tours page. Recommended dimensions: 1920x469 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Contact Banner Widget"
+            name: "contactBannerWidget"
+            widget: "object"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/blog", public_folder: "/assets/images/blog", hint: "Upload the contact banner image. Recommended dimensions: Width 410x380px." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Title", name: "title", widget: "string", default: "Call Us Now", hint: "Enter the text for the contact banner." }
+              - { label: "Phone", name: "phone", widget: "string", default: "+1234567890", hint: "Enter the phone number to be displayed on the banner." }
+  - name: "excursionsPage"
+    label: "Excursions Page"
+    files:
+      - file: "src/_data/excursionsPage.json"
+        label: "Excursions Page Media"
+        name: "excursionsPage"
+        fields:
+          - label: "Page Banner"
+            name: "pageBanner"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload a large banner image for the excursions page. Recommended dimensions: 1920x469 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "WhatsApp Contact Image"
+            name: "whatsAppContactImage"
+            widget: "object"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/blog", public_folder: "/assets/images/blog", hint: "Upload the WhatsApp contact image. Recommended dimensions: Width 410x380px." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "WhatsApp URL", name: "whatsAppUrl", widget: "string", hint: "Enter the WhatsApp contact link." }
+  - name: "aboutUsPage"
+    label: "About Us Page"
+    files:
+      - file: "src/_data/aboutUsPage.json"
+        label: "About Us Page Media"
+        name: "aboutUsPage"
+        fields:
+          - label: "Page Banner"
+            name: "pageBanner"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload a large banner image for the about us page. Recommended dimensions: 1920x469 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Call to Action Background"
+            name: "ctaBackground"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload a background image for the call to action section on the about us page. Recommended dimensions: 1920x517 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Testimonial Image"
+            name: "testimonialImage"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/testimonial", public_folder: "/assets/images/testimonial", hint: "Upload an image for the testimonial section. Recommended dimensions: 300x300 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+  - name: "contactUsPage"
+    label: "Contact Us Page"
+    files:
+      - file: "src/_data/contactUsPage.json"
+        label: "Contact Us Page Media"
+        name: "contactUsPage"
+        fields:
+          - label: "Page Banner"
+            name: "pageBanner"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload a large banner image for the contact us page. Recommended dimensions: 1920x469 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+  - name: "checoutPage"
+    label: "Checkout Page"
+    files:
+      - file: "src/_data/checkoutPage.json"
+        label: "Checkout Page Media"
+        name: "checkoutPage"
+        fields:
+          - label: "Page Banner"
+            name: "pageBanner"
+            widget: "list"
+            fields:
+              - { label: "Image Source", name: "src", widget: "image", media_folder: "/src/assets/images/bg", public_folder: "/assets/images/bg", hint: "Upload a large banner image for the checkout page. Recommended dimensions: 1920x469 pixels." }
+              - { label: "Alt Text", name: "alt", widget: "string" }

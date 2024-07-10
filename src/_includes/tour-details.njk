@@ -1,0 +1,419 @@
+---
+layout: "base.njk"
+---
+
+{% block header %}
+    {% include "header-general.njk" %}
+{% endblock %}
+
+{% block content %}
+    <!--====== Start Place Details Section ======-->
+    <section class="place-details-section">
+        <!--=== Place Slider ===-->
+        <div class="place-slider-area overflow-hidden wow fadeInUp">
+            <div class="place-slider">
+              {% for img in bannerImages %}
+              <div class="place-slider-item">
+                <div class="place-img">
+                  <img src="{{ img.src }}" alt="{{ img.alt }}">
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+
+        <div class="container">
+            <!--=== Tour Details Wrapper ===-->
+            <div class="tour-details-wrapper pt-80">
+                <!--=== Tour Title Wrapper ===-->
+                <div class="tour-title-wrapper pb-30 wow fadeInUp">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="tour-title mb-20">
+                                <h3 class="title">{{ title }}</h3>
+                                <p><i class="far fa-map-marker-alt"></i>{{ location | replace("-", " ") | titleCase }}</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="tour-widget-info">
+                                <div class="info-box mb-20">
+                                    <div class="icon">
+                                        <i class="fal fa-box-usd"></i>
+                                    </div>
+                                    <div class="info">
+                                        <h4><span>From</span> ${{ youthPrice }}</h4>
+                                    </div>
+                                </div>
+                                <div class="info-box mb-20">
+                                    <div class="icon">
+                                        <i class="fal fa-clock"></i>
+                                    </div>
+                                    <div class="info">
+                                        <h4><span>Duration</span> {{ duration }} Days</h4>
+                                    </div>
+                                </div>
+                                <div class="info-box">
+                                    <div class="icon">
+                                        <i class="fal fa-planet-ringed"></i>
+                                    </div>
+                                    <div class="info">
+                                        <h4><span>Tour Type</span> {{ tourType }}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--=== Tour Area Nav ===-->
+                <div class="tour-area-nav pt-20 pb-20 wow fadeInUp">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="ratings-box">
+                                <ul class="ratings">
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><i class="fas fa-star"></i></li>
+                                    <li><a href="#">(30+ Reviews)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="share-nav">
+                                <!-- Trigger/Open The Modal -->
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#shareModal">Share<i class="far fa-share"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- The Modal -->
+                        <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="shareModalLabel">Share this Tour</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="social-links">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=example.com" target="_blank" class="btn btn-primary">Share on Facebook</a>
+                                            <a href="https://twitter.com/intent/tweet?url=example.com&text=Amazing%20Tour!" target="_blank" class="btn btn-info">Tweet</a>
+                                            <a href="https://www.linkedin.com/shareArticle?mini=true&url=example.com&title=Amazing%20Tour&summary=Check%20out%20this%20amazing%20tour!" target="_blank" class="btn btn-primary">Share on LinkedIn</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!--=== Explore Tour and Description ===-->
+                <div class="row">
+                    <div class="col-xl-8">
+                        <!--=== Place Content Wrap ===-->
+                        <div class="place-content-wrap pt-45 wow fadeInUp mb-50">
+                            <h3 class="title">Explore Tour</h3>
+                            <p>{{ description }}</p>
+                            <h4>Highlights</h4>
+                            <p>{{ itinerary_intro | default("Embark on a journey where every moment is a discovery, showcasing the unparalleled beauty and diverse cultures of Kenya.") }}</p>
+                            <div class="row align-items-lg-center">
+                                <div class="col-lg-5">
+                                    <ul class="check-list">
+                                        {% for highlight in highlights %}
+                                        <li><i class="fas fa-badge-check"></i> {{ highlight }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="col-lg-7">
+                                    <img src="{{ cardImageSrc }}" class="mb-20 w-100" alt="{{ cardImageAlt }}">
+                                </div>
+                            </div>
+
+                            <h4>Inclusions & Exclusions</h4>
+ <p>{{ itinerary_intro | default("Explore the Wonders of Kenya: Know What's Included and What to Expect on Your Adventure.") }}</p>
+ <div class="row align-items-lg-top mb-4">
+    <div class="col-lg-6">
+        <h5 class="mb-45">Inclusions</h5>
+        <ul class="check-list">
+            {% for inclusion in inclusions %}
+            <li><i class="fas fa-check"></i> {{ inclusion }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-lg-6">
+        <h5 class="mb-50">Exclusions</h5>
+        <ul class="check-list">
+            {% for exclusion in exclusions %}
+            <li><i class="fas fa-times"></i> {{ exclusion }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+                            <h4>Itinerary</h4>
+                            <p>{{ itinerary_intro | default('Embark on a journey filled with daily discoveries, from the wild expanses of national parks to the vibrant traditions of local communities.') }}</p>
+                            <!--=== Days Area ===-->
+                            
+
+                             <div class="days-area mb-50 wow fadeInUp">
+                                <!-- Tab Navigation -->
+                                <ul class="nav nav-tabs mb-35">
+                                    {% for i in range(1, duration + 1) %}
+                                    <li class="nav-item">
+                                        <button class="nav-link{% if loop.first %} active{% endif %}" 
+                                                id="day{{ i }}-tab" 
+                                                data-bs-target="#day{{ i }}" 
+                                                type="button" 
+                                                role="tab">
+                                            Day {{ i }}
+                                        </button>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            
+                                <!-- Tab Content -->
+                                <div class="tab-content">
+                                    {% for i in range(1, duration + 1) %}
+                                    <div class="tab-pane{% if loop.first %} active{% endif %}" 
+                                         id="day{{ i }}" 
+                                         role="tabpanel" 
+                                         aria-labelledby="day{{ i }}-tab">
+                                        <div class="content-box">
+                                            <p class="pb-20">{{ itinerary[i-1].description }}</p>
+                                            <ul class="check-list">
+                                                {% for activity in itinerary[i-1].activities %}
+                                                <li><i class="fas fa-badge-check"></i> {{ activity }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+
+                        </div>
+                            
+                            <!--=== Map Box ===-->
+                            <div class="map-box mb-60 wow fadeInUp">
+                                <!-- Use the mapQuery variable from the current tour's markdown file -->
+                                <iframe src="https://maps.google.com/maps?q={{ mapQuery }}&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen></iframe>
+                            </div>
+
+
+                            <!-- Accommodations Section -->
+<div class="accommodation-details mb-30">
+    <h3>Accommodation</h3>
+    <p class="pb-20 pt-15">{{ accommodation_intro | default('Discover your home away from home in exquisite locales, where comfort meets culture in every stay.') }}</p>
+    <ul class="accommodation-list">
+        {% for accommodation in accommodations %}
+        <li class="accommodation-item pb-10">
+            <i class="fa fa-bed" aria-hidden="true"></i>
+            <div class="accommodation-info">
+                <strong>{{ accommodation.name }}</strong> - {{ accommodation.description }}. <!-- Starting at {{ accommodation.price }} -->
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+                            {# <!--=== Related Tour Place ===-->
+                            <div class="related-tour-place wow fadeInUp">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="section-title mb-35">
+                                            <h3>Related Tours</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- Slider arrows -->
+                                        <div class="place-arrows">
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recent-place-slider">
+                                    <!-- Related tours are dynamically generated based on the same location -->
+                                    {% set locationNormalized = location | lower %}
+                                    {% for related in collections.toursByLocation[locationNormalized] %}
+                                    {% if related.url != page.url %}
+                                    <div class="single-place-item mb-60">
+                                        <div class="place-img">
+                                            <img src="{{ related.data.images[0] }}" alt="Image of {{ related.data.title }}">
+                                        </div>
+                                        <div class="place-content">
+                                            <div class="info">
+                                                <ul class="ratings">
+                                                    {% for i in range(0, 5) %}
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    {% endfor %}
+                                                    <li><a href="{{ related.url }}">(4.9)</a></li>
+                                                </ul>
+                                                <h4 class="title"><a href="{{ related.url }}">{{ related.data.title }}</a></h4>
+                                                <p class="location"><i class="fas fa-map-marker-alt"></i>{{ related.data.location | replace("-", " ") | titleCase }}</p>
+                                                <p class="price"><i class="fas fa-usd-circle"></i>Resident: <span class="currency"></span>KES {{ related.data.residentYouthPrice }}</p>
+                                                <p class="price"><i class="fas fa-usd-circle"></i>Non-Resident: <span class="currency"></span>USD {{ related.data.youthPrice }}</p>
+                                                <div class="meta">
+                                                    <span><i class="far fa-clock"></i>{{ related.data.duration }} Days</span>
+                                                    <span><i class="far fa-user"></i>{{ related.data.maxGuests }} Guests</span>
+                                                    <span><a href="{{ related.url }}">Details<i class="far fa-long-arrow-right"></i></a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    {% else %}
+                                    <p>No related tours found.</p>
+                                    {% endfor %}
+                                </div>
+                            </div> #}
+
+                            <!--=== Related Tour Place ===-->
+                            
+                            {# <div class="related-tour-place wow fadeInUp">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="section-title mb-35">
+                                            <h3>Related Tours</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- Slider arrows -->
+                                        <div class="place-arrows">
+                                            <div class="swiper-button-prev"></div>
+                                            <div class="swiper-button-next"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="recent-place-slider">
+                                    <!-- Related tours are dynamically generated based on the same location -->
+                                    {% set locationNormalized = location | lower %}
+                                    {% set relatedTours = collections.toursByLocation[locationNormalized] | rejectattr('url', 'equalto', page.url) %}
+                                    {% if relatedTours | length > 0 %}
+                                    {% for related in relatedTours %}
+                                    <div class="single-place-item mb-60">
+                                        <div class="place-img">
+                                            <img src="{{ related.data.images[0] }}" alt="Image of {{ related.data.title }}">
+                                        </div>
+                                        <div class="place-content">
+                                            <div class="info">
+                                                <ul class="ratings">
+                                                    {% for i in range(0, 5) %}
+                                                    <li><i class="fas fa-star"></i></li>
+                                                    {% endfor %}
+                                                    <li><a href="{{ related.url }}">(4.9)</a></li>
+                                                </ul>
+                                                <h4 class="title"><a href="{{ related.url }}">{{ related.data.title }}</a></h4>
+                                                <p class="location"><i class="fas fa-map-marker-alt"></i>{{ related.data.location | replace("-", " ") | titleCase }}</p>
+                                                <p class="price"><i class="fas fa-usd-circle"></i>Resident: <span class="currency"></span>KES {{ related.data.residentYouthPrice }}</p>
+                                                <p class="price"><i class="fas fa-usd-circle"></i>Non-Resident: <span class="currency"></span>USD {{ related.data.youthPrice }}</p>
+                                                <div class="meta">
+                                                    <span><i class="far fa-clock"></i>{{ related.data.duration }} Days</span>
+                                                    <span><i class="far fa-user"></i>{{ related.data.maxGuests }} Guests</span>
+                                                    <span><a href="{{ related.url }}">Details<i class="far fa-long-arrow-right"></i></a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% else %}
+                                    <div class="no-related-tours">
+                                        <p>No related tours found.</p>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div> #}
+
+
+                    </div>
+
+                    <div class="col-xl-4">
+                        <div class="sidebar-widget-area pt-60 pl-lg-30">
+                            <div class="sidebar-widget booking-form-widget wow fadeInUp mb-40">
+                                
+                                {% set pageType = 'tour' %} <!-- or 'excursion' for excursion-details.njk -->
+                                {% include "booking-form-vertical.njk" %}
+                                                           
+                            </div>
+
+                            <!--=== Booking Info Widget ===-->
+                            <div class="sidebar-widget booking-info-widget wow fadeInUp mb-40">
+                                <h4 class="widget-title">Tour Information</h4>
+                                <ul class="info-list">
+                                    <li><span><i class="far fa-user-circle"></i>Max Guests<span>{{ maxGuests }}</span></span></li>
+                                    <li><span><i class="far fa-map-marker-alt"></i>Location<span>{{ location | titleCase }}</span></span></li>
+                                    <li><span><i class="far fa-globe"></i>Language<span>{{ tour.data.language | default('English') }}</span></span></li>
+                                </ul>
+                            </div>
+
+                            <!--=== Recent Place Widget ===-->
+                            {# <div class="sidebar-widget recent-place-widget mb-40 wow fadeInUp">
+                                <h4 class="widget-title">Discounted Deals</h4>
+                                <ul class="recent-place-list">
+                                    {% for deal in collections.tours if deal.data.discount %}
+                                    <li class="place-thumbnail-content">
+                                        <img src="{{ deal.data.images[0] }}" alt="post thumb">
+                                        <div class="place-content">
+                                            <ul class="ratings">
+                                                <li><i class="fas fa-star"></i></li>
+                                                <!-- Add as many stars as needed -->
+                                            </ul>
+                                            <h5><a href="{{ deal.url }}">{{ deal.data.title }}</a></h5>
+                                            <span class="price"><span class="text">From :</span><span class="currency">$</span>{{ deal.data.price | discountPrice(deal.data.discount) }}</span>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div> #}
+
+                            <!--=== Banner Widget ===-->
+                            <div class="sidebar-widget sidebar-banner-widget wow fadeInUp mb-40">
+                                <div class="banner-widget-content">
+                                    <div class="banner-img">
+                                        <img src="/assets/images/blog/banner-1.jpg" height="380px" alt="Contact Image">
+                                        <div class="hover-overlay">
+                                            <div class="hover-content">
+                                                <h4 class="title"><a href="tel:+1234567890">Call Us Now</a></h4>
+                                                <p><i class="fas fa-phone"></i> {{info.phone}} </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {# <div class="sidebar-widget sidebar-banner-widget wow fadeInUp">
+                                <div class="banner-widget-content">
+                                    <a href="https://wa.me/1234567890?text=I'm%20interested%20in%20booking%20a%20tour">
+                                        <img src="/assets/images/blog/banner-1.jpg" alt="WhatsApp Chat" style="height: 50%;">
+                                    </a>
+                                </div>
+                            </div> #}
+
+
+                            
+                        </div>
+                    </div>
+                    
+
+
+
+                </div>
+            </div>
+        </div>
+    </section><!--====== End Place Details Section ======-->
+
+<!-- Include the Image Strip at the bottom of every page -->
+{% include "gallery-strip.njk" %}
+
+{% endblock %}
+
+{% block script %}
+    <script src="/assets/js/tour-details.js"></script>
+{% endblock %}

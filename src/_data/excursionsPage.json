@@ -1,0 +1,16 @@
+{
+  "pageBanner": [
+    {
+      "src": "/assets/images/bg/excursions_optimized.png",
+      "alt": "Excursions Page Banner",
+      "hint": "Upload a large banner image for the excursions page. Recommended dimensions: 1920x469 pixels."
+    }
+  ],
+  "whatsAppContactImage": {
+    "src": "/assets/images/blog/banner-1.jpg",
+    "alt": "Contact Image",
+    "hint": "Upload the WhatsApp contact image. Recommended dimensions: Width 380px.",
+    "title": "WhatsApp Us Now",
+    "whatsAppUrl": "https://api.whatsapp.com/send?phone=254113577335&text=Hello%2C%20I%20want%20more%20info%20about%20this%20tour%F0%9F%98%8A"
+  }
+}
